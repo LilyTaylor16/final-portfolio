@@ -1,0 +1,215 @@
+.orbit-page {
+    background-color: #fff;
+    color: var(--black);
+    padding: 120px 20px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    font-family: 'Poppins', sans-serif;
+    animation: fadeIn 1s ease-in;
+  }
+  
+
+  .orbit-logo-link {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+  
+  .orbit-logo-img {
+    width: 64px;
+    height: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  .orbit-logo-img:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: brightness(1.1);
+    cursor: pointer;
+  }
+  
+
+  .orbit-hero {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    animation: fadeUp 1s ease-out;
+  }
+  
+  .orbit-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--pink-primary), var(--pink-hot));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.6rem;
+    letter-spacing: -1px;
+  }
+  
+  .orbit-subtitle {
+    font-size: 1.25rem;
+    color: var(--black-muted);
+    font-weight: 400;
+  }
+  
+
+  .orbit-section {
+    margin-bottom: 4rem;
+    animation: fadeUp 0.8s ease-in-out;
+  }
+  
+  .orbit-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(90deg, var(--pink-primary), var(--pink-hot));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .orbit-intro p,
+  .orbit-section p {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    margin-bottom: 1.4rem;
+    color: var(--black);
+  }
+  
+
+  .orbit-list {
+    padding-left: 1.2rem;
+    list-style: disc;
+  }
+  
+  .orbit-list li {
+    margin-bottom: 0.9rem;
+    transition: all 0.2s ease;
+  }
+  
+  .orbit-list li:hover {
+    color: var(--pink-hot);
+    transform: translateX(5px);
+  }
+  
+  .orbit-brand-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+    padding: 30px;
+    border-radius: 14px;
+    background: linear-gradient(to right, var(--pink-hot), var(--pink-primary));
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .orbit-brand-grid img:nth-child(1) {
+    grid-column: span 2;
+  }
+  
+  .orbit-brand-grid img:nth-child(2) {
+    grid-column: span 2;
+  }
+  
+  .orbit-brand-grid img:nth-child(3) {
+    grid-column: span 2;
+  }
+  
+  .orbit-brand-grid img:nth-child(4) {
+    grid-column: span 3;
+  }
+  
+  .orbit-brand-grid img:nth-child(5) {
+    grid-column: span 3;
+  }
+  
+  .orbit-brand-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    background-color: #fff;
+    padding: 10px;
+  }
+  
+  .orbit-brand-grid img:hover {
+    transform: scale(1.03);
+  }
+  
+  
+
+  .orbit-wireframe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .orbit-wireframe-grid img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  }
+  
+  .orbit-wireframe-grid img:hover {
+    transform: scale(1.03) rotate(0.5deg);
+  }
+  
+
+  .orbit-back-button {
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--pink-primary);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .orbit-back-button:hover {
+    color: var(--pink-hot);
+    transform: translateX(-3px);
+  }
+  
+
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+
+  @media (max-width: 768px) {
+    .orbit-title {
+      font-size: 2.6rem;
+    }
+  
+    .orbit-subtitle {
+      font-size: 1rem;
+    }
+  
+    .orbit-section h2 {
+      font-size: 1.6rem;
+    }
+  }
+  @media (max-width: 768px) {
+    .orbit-brand-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+  
+    .orbit-brand-grid img {
+      grid-column: span 2 !important;
+    }
+  }
+  

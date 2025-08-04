@@ -1,0 +1,108 @@
+.project-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  color: var(--black);
+}
+
+.project-description {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--black);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.project-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.project-images img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.project-wrapper section:nth-child(odd) {
+  background-color: #fdf8ff;
+  padding: 3rem;
+  border-radius: 1rem;
+}
+
+.project-wrapper section:nth-child(even) {
+  background-color: #fffdf8;
+  padding: 3rem;
+  border-radius: 1rem;
+}
+.project-images img {
+  transition: transform 0.3s ease;
+}
+
+.project-images img:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
+.project-wrapper section {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInSection 0.8s ease forwards;
+  animation-delay: calc(var(--section-index) * 0.2s);
+}
+
+@keyframes fadeInSection {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(-10deg); }
+  50% { transform: translateY(-12px) rotate(-8deg); }
+  100% { transform: translateY(0) rotate(-10deg); }
+}
+
+.punk-logo {
+  position:fixed;
+  z-index: 0;
+  opacity: 30%;
+  width: 240px;
+  pointer-events: none;
+  filter: blur(0.8px);
+  animation: float 12s ease-in-out infinite;
+}
+
+.punk-logo1 {
+  top: 5%;
+  left: -120px;
+  animation-delay: 0s;
+}
+.punk-logo2 {
+  top: 30%;
+  right: -100px;
+  animation-delay: 2s;
+}
+.punk-logo3 {
+  top: 60%;
+  left: 40%;
+  transform: translateX(-50%) rotate(-5deg);
+  animation-delay: 4s;
+}
+.punk-logo4 {
+  bottom: -50px;
+  right: 15%;
+  animation-delay: 1s;
+}
