@@ -1,0 +1,259 @@
+
+
+.work-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.work-wrapper {
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.work-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  background: linear-gradient(90deg, var(--pink-primary), var(--pink-hot));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background-color: white;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.project-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background-color: #f3f3f3;
+}
+
+.project-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.project-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--black);
+}
+
+.project-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--pink-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-link:hover {
+  color: var(--pink-hot);
+}
+
+
+@media screen and (max-width: 768px) {
+  .work-title {
+    font-size: 2.2rem;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+  }
+
+  .project-link {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+.carousel-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  padding-top: 40px;
+  padding-bottom: 100px;
+}
+
+
+.carousel-title {
+  position: fixed;
+  top: 135px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--pink-primary), var(--pink-hot));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0.5rem 1rem;
+  pointer-events: none;
+}
+
+
+
+.carousel {
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  perspective: 1200px;
+  position: relative;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+
+
+.carousel-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%);
+  transition: transform 0.8s ease-in-out;
+}
+
+.carousel-slide {
+  position: absolute;
+  width: 250px;
+  height: 350px;
+  background-color: var(--pink-soft);
+  border-radius: 1rem;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.carousel-slide img {
+  width: 100%;
+  max-width: 250px;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+.carousel-slide h3 {
+  margin: 0.5rem 0 0;
+  font-size: 1.1rem;
+}
+
+.carousel-slide p {
+  font-size: 0.9rem;
+  color: var(--black-muted);
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+
+.carousel-btn {
+  background: var(--pink-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+
+.carousel-btn:hover {
+  background: var(--pink-hot);
+}
+
+
+@media (max-width: 768px) {
+  .carousel-slide {
+    width: 200px;
+    height: 300px;
+  }
+
+  .carousel-title {
+    font-size: 2.2rem;
+  }
+}
+.work-logo-link {
+  display: block;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  position:fixed;
+  z-index: 1001;
+}
+
+.work-logo-img {
+  width: 80px;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.work-logo-img:hover {
+  transform: rotate(6deg) scale(1.05);
+  cursor: pointer;
+}
+.carousel-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}

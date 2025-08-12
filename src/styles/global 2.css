@@ -1,0 +1,89 @@
+@import url('./variables.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styling */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--off-white);
+    color: var(--text-main);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  
+
+  h1, h2, h3, h4 {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  
+
+  a {
+    color: var(--text-main);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  a:hover {
+    color: var(--hover-accent);
+  }
+  
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--padding);
+  }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: var(--off-white);
+  }
+  .app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  
+    padding: 0 2rem;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  .floating-logo {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 10;
+    width: 80px;
+    transition: transform 0.3s ease;
+    mix-blend-mode: difference; 
+  }
+  
+  .floating-logo img {
+    width: 100%;
+    height: auto;
+    pointer-events: auto;
+  }
+  
+  .floating-logo:hover {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  body {
+    cursor: url('/pink-star.png') 16 16, auto;
+  }
+  
+  
