@@ -1,0 +1,92 @@
+.deftones-page {
+    background-color: #0a0a0a;
+    color: #f1f1f1;
+    padding: 120px 20px 80px;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Poppins', sans-serif;
+  }
+  .deftones-logo-link {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+  
+  .deftones-logo-img {
+    width: 60px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+  }
+  
+  .deftones-logo-img:hover {
+    transform: scale(1.1) rotate(6deg);
+    cursor: pointer;
+  }
+  
+  
+  .deftones-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .deftones-title {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(90deg, var(--pink-primary), var(--pink-hot));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+  }
+  
+  .deftones-subtitle {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #bbbbbb;
+  }
+  
+  .deftones-gallery {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .deftones-image {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(255, 94, 191, 0.15);
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  .deftones-image:hover {
+    transform: scale(1.02);
+    filter: contrast(1.1) saturate(1.1);
+  }
+  
+  .deftones-description {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    color: #dcdcdc;
+  }
+  
+  .deftones-description p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .deftones-back-button {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--pink-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .deftones-back-button:hover {
+    color: white;
+  }
+  

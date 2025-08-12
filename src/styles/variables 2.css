@@ -1,0 +1,26 @@
+:root {
+    /* Core brand pinks */
+    --pink-primary: #FF2DAF;
+    --pink-soft: #FFC9E3;
+    --pink-hot: #FF8ACF;
+  
+    /* Neutrals */
+    --black: #1e1e24;
+    --off-white: #fdfdfd;
+    --gray: #e3e3e3;
+  
+    /* Accent pops */
+    --electric-lime: #B0FF2A;
+    --blue-glow: #A4E3E0;
+  
+    /* Font, border, hover accent colors */
+    --text-main: var(--black);
+    --text-light: var(--off-white);
+    --hover-accent: var(--pink-hot);
+    --border-color: var(--gray);
+  
+    /* Layout spacing */
+    --max-width: 1200px;
+    --padding: 2rem;
+  }
+  

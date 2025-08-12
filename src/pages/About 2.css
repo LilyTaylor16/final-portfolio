@@ -1,0 +1,162 @@
+
+.about-wrapper {
+  position: relative;
+  padding: 4rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  z-index: 1;
+}
+
+.about-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  text-align: center;
+  background: linear-gradient(90deg, var(--pink-primary), var(--pink-hot));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease forwards;
+}
+
+.about-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.about-block {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  animation: fadeInUp 1s ease;
+}
+
+.about-block.reverse {
+  flex-direction: row-reverse;
+}
+
+.about-img {
+  width: 45%;
+  border-radius: 1.25rem;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.about-img:hover {
+  transform: scale(1.02);
+}
+
+.about-text {
+  width: 55%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1.8rem;
+  border-radius: 1rem;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  color: var(--black);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+}
+
+.about-text:hover {
+  transform: translateY(-2px);
+}
+
+
+.bg-graphic {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 100;
+  filter: blur(1px);
+}
+
+
+.bg-graphic:nth-of-type(6) {
+  top: 1%;
+  left: -75%;
+  width: 1500px;
+}
+
+.bg-graphic:nth-of-type(2) {
+  top: 20%;
+  right: -15%;
+  width: 300px;
+}
+
+.bg-graphic:nth-of-type(3) {
+  top: 35%;
+  left: 25%;
+  width: 1000px;
+  opacity: 20;
+}
+
+.bg-graphic:nth-of-type(4) {
+  top: 50%;
+  right: -50%;
+  width: 800px;
+}
+
+.bg-graphic:nth-of-type(5) {
+  top: 70%;
+  left: -50%;
+  width: 300px;
+}
+
+.bg-graphic:nth-of-type(1) {
+  top: 85%;
+  right: 15%;
+  width: 500px;
+}
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 768px) {
+  .about-block,
+  .about-block.reverse {
+    flex-direction: column;
+  }
+
+  .about-img,
+  .about-text {
+    width: 100%;
+  }
+
+  .about-title {
+    font-size: 2.2rem;
+  }
+}
+
+
+.about-block.reverse:last-of-type {
+  margin-top: 2rem;
+}
+.about-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.about-logo {
+  width: 120px;
+  height: auto;
+  animation: pulseLogo 3s infinite ease-in-out;
+}
+
+
+@keyframes pulseLogo {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.85;
+  }
+}
+/* hi */
