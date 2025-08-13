@@ -21,7 +21,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.lily-taylor.ca
-          username: "github@lily-taylor.ca"
+          username: github@lily-taylor.ca
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: "dist/"
           server-dir: "public_html/"
