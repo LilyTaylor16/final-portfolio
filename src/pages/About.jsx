@@ -1,7 +1,8 @@
-import React from 'react';
+// src/pages/about.jsx
+import React, { useEffect, useState } from 'react';
 import './About.css';
-import { Link } from 'react-router-dom'; 
-import { Helmet } from "react-helmet";
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import img1 from '../assets/about/1.jpg';
 import img2 from '../assets/about/2.jpg';
@@ -12,16 +13,104 @@ import img6 from '../assets/about/6.jpg';
 import southAfricaVideo from '../assets/about/SouthAfrica.mp4';
 import Logo from '../assets/images/logo.svg';
 
+import SpotifyDailyThree from '../components/SpotifyDailyThree';
+import AlbumOfTheMonth from '../components/AlbumOfTheMonth';
+
 import { spray1, spray4, spray6, star1, star2, circles } from '../assets/graphics';
+import { getValidToken } from '../spotifyAuth';
 
 function About() {
+  // --- AOTM state ---
+  const [aotm, setAotm] = useState({ id: '', name: '', artist: '', monthKey: '' });
+
+  useEffect(() => {
+    // Deterministic “random” key per calendar month, e.g. "2025-10"
+    const monthKey = new Date().toISOString().slice(0, 7);
+    const cacheKey = 'aotm-cache';
+
+    // 1) Use cache if it matches this month (prevents reshuffling within the month)
+    const cached = (() => {
+      try { return JSON.parse(localStorage.getItem(cacheKey) || '{}'); }
+      catch { return {}; }
+    })();
+
+    if (cached?.monthKey === monthKey && cached?.id) {
+      setAotm(cached);
+      return;
+    }
+
+    // 2) Otherwise fetch albums from playlist, pick stable “random”, and cache for the month
+    async function loadAOTM() {
+      try {
+        const token = await getValidToken();
+        if (!token) {
+          console.warn('[AOTM] Missing/expired Spotify token. Login flow required.');
+          return;
+        }
+
+        const playlistId = import.meta.env.VITE_SPOTIFY_PLAYLIST_ID;
+        if (!playlistId) {
+          console.error('[AOTM] Missing VITE_SPOTIFY_PLAYLIST_ID');
+          return;
+        }
+
+        // Fetch ALL tracks (handles pagination)
+        let next = `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=100&fields=items(track(album(id,name,images,artists(name)))),next`;
+        const albumsMap = new Map(); // dedupe albums by id
+
+        while (next) {
+          const r = await fetch(next, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          if (!r.ok) {
+            console.error('[AOTM] Failed to fetch playlist tracks', r.status);
+            break;
+          }
+          const data = await r.json();
+          for (const item of data.items || []) {
+            const alb = item?.track?.album;
+            if (alb?.id && !albumsMap.has(alb.id)) albumsMap.set(alb.id, alb);
+          }
+          next = data.next;
+        }
+
+        const albums = Array.from(albumsMap.values());
+        if (!albums.length) {
+          console.warn('[AOTM] No albums found in playlist.');
+          return;
+        }
+
+        // Deterministic “random” pick that stays the same all month.
+        // Hash year+month to a stable index.
+        const [y, m] = monthKey.split('-').map(Number);
+        const seed = Number(`${y}${String(m).padStart(2, '0')}`);
+        const idx = Math.abs((seed * 2654435761) % albums.length);
+        const pick = albums[idx];
+
+        const payload = {
+          id: pick.id,
+          name: pick.name,
+          artist: (pick.artists || []).map(a => a.name).join(', '),
+          monthKey
+        };
+
+        localStorage.setItem(cacheKey, JSON.stringify(payload));
+        setAotm(payload);
+      } catch (err) {
+        console.error('[AOTM] Error selecting album:', err);
+      }
+    }
+
+    loadAOTM();
+  }, []);
+
   return (
     <div className="about-wrapper">
       <Helmet>
         <title>About | Lily Taylor Portfolio</title>
-        <meta 
-          name="description" 
-          content="Learn more about Lily Taylor — a multi-disciplinary creative and New Media student with a story shaped by the world, passion for design, and eye for purpose-driven digital experiences." 
+        <meta
+          name="description"
+          content="Learn more about Lily Taylor — a multi-disciplinary creative and New Media student with a story shaped by the world, passion for design, and eye for purpose-driven digital experiences."
         />
       </Helmet>
 
@@ -43,7 +132,7 @@ function About() {
 
       <div className="about-grid">
         <div className="about-block">
-          <img src={img1} alt="Borneo" className="about-img" />
+          <img src={img3} alt="Borneo" className="about-img" />
           <p className="about-text spiky-card">
             My journey began in the jungles of Miri, Borneo, where I was born premature as an elective caesarean. My first breaths, steps, smells, and touches were all experienced in the hot, tropical beaches and lush jungles of Borneo. I truly believe those early moments left a mark on my subconscious - ever since, I’ve been drawn to warmth, to the beach, to anything that feels a little wild and alive.
           </p>
@@ -66,7 +155,7 @@ function About() {
         </div>
 
         <div className="about-block reverse">
-          <img src={img3} alt="North Vancouver" className="about-img" />
+          <img src={img1} alt="North Vancouver" className="about-img" />
           <p className="about-text spiky-card">
             Now I live in North Vancouver, and it feels like home. Mountains, ocean, creativity, culture—I feel lucky every day to be here.
           </p>
@@ -99,6 +188,51 @@ function About() {
             As I move forward in New Media and Web Development, I’m looking for an internship that allows me to grow both creatively and professionally. I hope to join a team where I can contribute thoughtfully, build on what I’ve learned, and continue developing my skills in design and front-end development. I'm especially interested in opportunities that value strong visual communication, purposeful design, and collaboration. I'm eager to learn, take on real responsibilities, and gain experience that helps me feel more confident and prepared for the next steps in my career.
           </p>
         </div>
+
+        {/* === MUSIC SECTION === */}
+        <section className="about-music-section">
+          <h2 className="about-music-title">Music</h2>
+          <p className="about-music-desc">
+            Music is a huge part of my life. Here are 3 songs from my playlist that refresh daily!
+          </p>
+
+          <div className="music-grid-2col">
+            {/* LEFT: Daily 3 */}
+            <div className="music-left">
+              <SpotifyDailyThree />
+            </div>
+
+            {/* RIGHT: one playlist + one album (AOTM now dynamic) */}
+            <div className="music-right">
+              <div className="music-panel">
+                <h4 className="music-subtitle">Full Playlist</h4>
+                <iframe
+                  src={`https://open.spotify.com/embed/playlist/${import.meta.env.VITE_SPOTIFY_PLAYLIST_ID}?utm_source=generator`}
+                  width="100%"
+                  height="200"
+                  frameBorder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  title="Full Playlist"
+                />
+              </div>
+
+              <div className="music-panel">
+                {/* <h4 className="music-subtitle">Album of the Month</h4> */}
+                {/* Replaces the hard-coded iframe with the dynamic monthly pick */}
+                <AlbumOfTheMonth
+                  albumId={aotm.id}
+                  blurb={
+                    aotm.id
+                      ? `${aotm.name} — ${aotm.artist}. Featured for ${aotm.monthKey}.`
+                      : ''
+                  }
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* === /MUSIC SECTION === */}
       </div>
     </div>
   );

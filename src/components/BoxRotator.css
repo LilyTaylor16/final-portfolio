@@ -1,0 +1,22 @@
+/* Fixed “page box” like the inspo — consistent size, no borders */
+.br-box {
+    position: relative;
+    width: min(52vw, 820px);      /* responsive width cap */
+    aspect-ratio: 16 / 10;        /* stable box; tweak if you want taller/shorter */
+    overflow: hidden;
+  }
+  
+  /* Stack and fade; contain so different sizes sit nicely */
+  .br-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;          /* no cropping */
+    object-position: center;      /* can override per-slide */
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+    will-change: opacity;
+  }
+  .br-media.is-active { opacity: 1; }
+  

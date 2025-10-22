@@ -86,4 +86,20 @@ html, body {
     cursor: url('/pink-star.png') 16 16, auto;
   }
   
+  body {
+    position: relative;
+    background: url('/src/assets/graphics/backsplash.png') center center / cover no-repeat fixed;
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.6); /* adjust opacity here */
+    pointer-events: none;
+    z-index: 0;
+  }
   

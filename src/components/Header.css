@@ -1,40 +1,52 @@
 .site-header {
-    position: sticky;
-    top: 0;
-    background-color: var(--off-white);
-    padding: 1.5rem var(--padding);
-    border-bottom: 1px solid var(--gray);
-    z-index: 100;
-  }
-  
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: var(--max-width);
-    margin: 0 auto;
-  }
-  
-  .logo-img {
-    height: 48px;
-    width: auto;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-  }
-  
-  .nav-links li a {
-    font-weight: 600;
-    text-transform: uppercase;
-    color: var(--black);
-    transition: 0.2s ease;
-  }
-  
-  .nav-links li a:hover {
-    color: var(--pink-primary);
-    text-shadow: 0 0 10px rgba(255, 45, 175, 0.3);
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--off-white);
+  padding: 1.5rem var(--padding);
+  border-bottom: 1px solid var(--gray);
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links li a {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--black);
+  transition: 0.2s ease;
+}
+
+.nav-links li a:hover {
+  color: var(--pink-primary);
+  text-shadow: 0 0 10px rgba(255, 45, 175, 0.3);
+}
+
+/* Add top padding so content isn’t hidden behind the fixed header */
+.home-wrapper,
+.about-wrapper,
+.work-wrapper,
+.contact-wrapper {
+  padding-top: 100px; /* adjust if your header height changes */
+}

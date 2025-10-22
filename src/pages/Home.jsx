@@ -5,31 +5,64 @@ import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo.svg';
 import { Helmet } from "react-helmet";
 
-// Import your custom SVG headers
-import AboutHeader from "../assets/graphics/headers/aboutblack.svg";
-import WorkHeader from "../assets/graphics/headers/workblack.svg";
-import ContactHeader from "../assets/graphics/headers/contactblack.svg";
+// Rotator
+import BoxRotator from "../components/BoxRotator";
 
+// ---- Import ABOUT images from src/assets/about (Vite style) ----
+import about1 from "../assets/about/1.jpg";
+import about2 from "../assets/about/2.jpg";
+import about3 from "../assets/about/3.jpg";
+import about4 from "../assets/about/4.jpg";
+import about5 from "../assets/about/5.jpg";
+import about6 from "../assets/about/6.jpg";
+
+// ---- NEW: Hand-drawn SVG headers (homepage only) ----
+import WorkHeader from "../assets/graphics/headers/WorkBlack.svg";
+import AboutHeader from "../assets/graphics/headers/AboutBlack.svg";
+import ContactHeader from "../assets/graphics/headers/ContactBlack.svg";
 
 function Home() {
-
-  // Fade-in on scroll for preview sections
+  // keep your fade-in utility, harmless
   useEffect(() => {
-    const els = document.querySelectorAll('.preview-section');
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
+    const els = document.querySelectorAll('.preview-section, .split-full');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
     els.forEach((el) => obs.observe(el));
     return () => obs.disconnect();
   }, []);
+
+  // RIGHT-SIDE ROTATORS
+  const projectSlides = [
+    { src: "/Projects/punkpucker/heartbreaker-can.png", alt: "Punk Pucker — Heartbreaker" },
+    { src: "/Projects/punkpucker/hyper-zest-can.png",  alt: "Punk Pucker — Hyper Zest" },
+    { src: "/Projects/Orbit/w7.png",                   alt: "Orbit Studios — Wireframe" },
+    { src: "/Projects/deftones/deftones-cover.png",    alt: "Deftones Portrait" },
+    { src: "/zine/lilyzine5.jpg",                      alt: "Zine Spread" },
+  ];
+
+  // About images: imported above from src/assets/about
+  const aboutSlides = [
+    { src: about6, alt: "About photo 6" },
+    { src: about5, alt: "About photo 5" },
+    { src: about4, alt: "About photo 4" },
+    { src: about3, alt: "About photo 3" },
+    { src: about2, alt: "About photo 2" },
+    { src: about1, alt: "About photo 1" },
+  ];
+
+  // Contact: reuse existing graphics you already import (no new assets)
+  const contactSlides = [
+    { src: star1,   alt: "Graphic star" },
+    { src: squares, alt: "Graphic squares" },
+    { src: circles, alt: "Graphic circles" },
+    { src: spray4,  alt: "Graphic spray" },
+  ];
 
   return (
     <div className="home-wrapper">
@@ -54,9 +87,8 @@ function Home() {
 
       <img src={spray4} alt="Spray" className="spray-bg" />
 
-      {/* Main */}
+      {/* Hero (unchanged) */}
       <section className="home container">
-        {/* Hero */}
         <div className="hero">
           <div className="home-logo-container">
             <img src={Logo} alt="Lily Taylor Logo" className="home-logo" />
@@ -66,46 +98,70 @@ function Home() {
           <p className="hero-tagline">Design & Motion student — turning ideas into visuals & stories</p>
           <Link to="/work" className="hero-btn btn--spike">See My Work</Link>
         </div>
-
-        {/* Featured Project */}
-        <div className="featured-project spiky-card">
-          <h2 className="section-heading">Featured Project</h2>
-          <div className="project-card spiky-card">
-            <h2 className="home-project-title">Punk Pucker Sour Beer Brand</h2>
-            <p className="project-desc">
-              Packaging and brand system exploring bold form, color, and market positioning.
-            </p>
-            <Link to="/projects/punkpucker" className="view-project btn--spike">
-              View Project →
-            </Link>
-          </div>
-        </div>
-
-        {/* Scrollable Previews with SVG headers */}
-        <section id="about-preview" className="preview-section spiky-card">
-          <img src={AboutHeader} alt="About" className="svg-header" />
-          <p>
-            Multidisciplinary designer focused on purposeful, detail-driven work across branding, motion, and front-end.
-          </p>
-          <Link to="/about" className="preview-link btn--spike">Read More →</Link>
-        </section>
-
-        <section id="work-preview" className="preview-section spiky-card">
-          <img src={WorkHeader} alt="Work" className="svg-header" />
-          <p>
-            Selected projects in branding, UI, motion, and interactive media.
-          </p>
-          <Link to="/work" className="preview-link btn--spike">Explore Projects →</Link>
-        </section>
-
-        <section id="contact-preview" className="preview-section spiky-card">
-          <img src={ContactHeader} alt="Contact" className="svg-header" />
-          <p>
-            Available for internships, collaborations, and freelance inquiries.
-          </p>
-          <Link to="/contact" className="preview-link btn--spike">Get in Touch →</Link>
-        </section>
       </section>
+
+      {/* FLOW WRAPPER: vertical leading line + nodes tie sections together */}
+      <div className="flow">
+        {/* Split: Work (formerly Projects) */}
+        <section className="split-full minimal-split">
+          <div className="flow-node" aria-hidden="true" />
+          <div className="split-col split-left">
+            {/* Replace text title with SVG image */}
+            <h2 className="split-title rule-to-spine" aria-label="Work">
+              <img src={WorkHeader} alt="Work" className="split-title-img" />
+            </h2>
+            <p className="split-sub">Branding, UI, motion, interactive</p>
+            <div className="split-links">
+              <Link to="/projects/punkpucker">Punk Pucker</Link>
+              <Link to="/projects/orbitstudios">Orbit Studios</Link>
+              <Link to="/projects/zine">Zine</Link>
+              <Link to="/projects/deftones">Deftones</Link>
+            </div>
+          </div>
+          <div className="split-col split-right">
+            {/* Faster rotation */}
+            <BoxRotator slides={projectSlides} interval={1800} />
+          </div>
+        </section>
+
+        {/* Split: About */}
+        <section className="split-full minimal-split">
+          <div className="flow-node" aria-hidden="true" />
+          <div className="split-col split-left">
+            {/* Replace text title with SVG image */}
+            <h2 className="split-title rule-to-spine" aria-label="About">
+              <img src={AboutHeader} alt="About" className="split-title-img" />
+            </h2>
+            <p className="split-sub">A little bit about why I am the way I am. </p>
+            <div className="split-links">
+              <Link to="/about">Read my story →</Link>
+            </div>
+          </div>
+          <div className="split-col split-right">
+            {/* Faster rotation */}
+            <BoxRotator slides={aboutSlides} interval={1600} />
+          </div>
+        </section>
+
+        {/* Split: Contact */}
+        <section className="split-full minimal-split">
+          <div className="flow-node" aria-hidden="true" />
+          <div className="split-col split-left">
+            {/* Replace text title with SVG image */}
+            <h2 className="split-title rule-to-spine" aria-label="Contact">
+              <img src={ContactHeader} alt="Contact" className="split-title-img" />
+            </h2>
+            <p className="split-sub">Wanna chat?</p>
+            <div className="split-links">
+              <Link to="/contact">Get in touch →</Link>
+            </div>
+          </div>
+          <div className="split-col split-right">
+            {/* Slightly faster */}
+            <BoxRotator slides={contactSlides} interval={1500} />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

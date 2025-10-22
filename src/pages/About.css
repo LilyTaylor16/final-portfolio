@@ -39,7 +39,6 @@
 
 .about-img {
   width: 45%;
-  border-radius: 0; /* sharp */
   object-fit: cover;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   transition: transform 0.4s ease;
@@ -50,7 +49,6 @@
   width: 55%;
   background-color: rgba(255, 255, 255, 0.95);
   padding: 1.8rem;
-  border-radius: 0; /* sharp */
   line-height: 1.6;
   font-size: 1.05rem;
   color: var(--black);
@@ -58,7 +56,7 @@
   border: 1px solid var(--pink-soft);
 }
 
-/* Background graphics (unchanged) */
+/* Background graphics */
 .bg-graphic { position: absolute; z-index: 0; pointer-events: none; opacity: 100; filter: blur(1px); }
 .bg-graphic:nth-of-type(6) { top: 1%; left: -75%; width: 1500px; }
 .bg-graphic:nth-of-type(2) { top: 20%; right: -15%; width: 300px; }
@@ -79,7 +77,7 @@
 .about-logo { width: 120px; height: auto; animation: pulseLogo 3s infinite ease-in-out; }
 @keyframes pulseLogo { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.85; } }
 
-/* ===== Spiky utilities (copied local so About can use them) ===== */
+/* ===== Spiky utilities ===== */
 .spiky-card{
   --e: 14px;
   position: relative;
@@ -90,13 +88,6 @@
     radial-gradient(circle at 0 100%, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) bottom left;
   -webkit-mask-size: 51% 51%;
   -webkit-mask-repeat: no-repeat;
-  mask:
-    radial-gradient(circle at 0 0, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) top left,
-    radial-gradient(circle at 100% 0, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) top right,
-    radial-gradient(circle at 100% 100%, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) bottom right,
-    radial-gradient(circle at 0 100%, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) bottom left;
-  mask-size: 51% 51%;
-  mask-repeat: no-repeat;
 }
 
 /* Spiky underline for the H1 */
@@ -110,4 +101,74 @@
   position:absolute; left:0; right:0; bottom:0; height:6px;
   background: conic-gradient(from 45deg, var(--pink-primary) 0 25%, transparent 0 50%) left/16px 100% repeat-x;
   opacity:.9;
+}
+
+/* === Music Section layout (fixed) === */
+.about-music-section {
+  margin-top: 4rem;
+  padding: 2.5rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--pink-soft);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+}
+
+.about-music-title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--pink-primary), var(--pink-hot));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.about-music-desc { margin-bottom: 1.5rem; }
+
+/* Two-column grid: Daily3 on left, embeds stacked on right */
+.music-grid-2col {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr; /* left wider */
+  gap: 24px;
+  align-items: start;
+}
+
+.music-left { min-width: 0; }   /* prevents overflow */
+.music-right {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 18px;
+  min-width: 0;
+}
+
+.music-panel { display: flex; flex-direction: column; gap: 8px; }
+
+.music-subtitle {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0;
+  color: var(--black);
+}
+
+/* Make embeds behave */
+.music-panel iframe {
+  width: 100%;
+  height: 200px;    /* matches JSX */
+  border: 0;
+  border-radius: 6px;
+  display: block;
+  /* prevent overlay / stacking weirdness */
+  position: relative;
+  z-index: 0;
+}
+
+/* Hover micro-interaction (optional) */
+.music-panel iframe:hover { transform: none; }
+
+/* Responsive: stack columns on smaller screens */
+@media (max-width: 980px) {
+  .music-grid-2col {
+    grid-template-columns: 1fr;
+  }
+  .music-right {
+    grid-template-rows: auto auto;
+  }
 }

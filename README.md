@@ -1,7 +1,2 @@
 # lily-portfolio
 
-<!-- redeploy trigger -->
-
-
-
-
