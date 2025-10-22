@@ -1,0 +1,7 @@
+[build]
+  functions = "netlify/functions"
+
+[dev]
+  command = "npm run dev"   # starts Vite
+  port = 8888               # Netlify dev proxy
+  targetPort = 5173         # your Vite dev server port

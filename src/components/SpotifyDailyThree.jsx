@@ -1,11 +1,11 @@
 // src/components/SpotifyDailyThree.jsx
 import React, { useEffect, useMemo, useState } from "react";
-import { getValidToken, startLogin } from "../spotifyAuth";
 import "./SpotifyDailyThree.css";
 
-const PLAYLIST_ID = import.meta.env.VITE_SPOTIFY_PLAYLIST_ID;
+// Safe to expose publicly:
+const PLAYLIST_ID = "2Jyo5t2r0wGybqlL85baRT"; // ← your playlist ID
 
-// Deterministic RNG so the picks change daily
+// Deterministic RNG so the picks change daily (same for everyone that day)
 function seedRandom(seed) {
   let h = 2166136261 >>> 0;
   for (let i = 0; i < seed.length; i++) {
@@ -22,47 +22,38 @@ function seedRandom(seed) {
 
 export default function SpotifyDailyThree() {
   const [tracks, setTracks] = useState([]);
-  const [needLogin, setNeedLogin] = useState(false);
   const todayKey = useMemo(() => new Date().toISOString().slice(0, 10), []);
 
   useEffect(() => {
+    let cancelled = false;
+
     (async () => {
       try {
-        const token = await getValidToken();
-        if (!token) {
-          setNeedLogin(true);
-          return;
-        }
-
+        // cache by playlist + day so we don't refetch constantly
         const cacheKey = `sp_cache_${PLAYLIST_ID}_${todayKey}`;
         const cached = localStorage.getItem(cacheKey);
         if (cached) {
-          setTracks(JSON.parse(cached));
+          const parsed = JSON.parse(cached);
+          if (!cancelled) setTracks(parsed);
           return;
         }
 
         const res = await fetch(
-          `https://api.spotify.com/v1/playlists/${PLAYLIST_ID}/tracks?limit=100`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          `/.netlify/functions/spotify-playlist?playlistId=${encodeURIComponent(PLAYLIST_ID)}`
         );
-        if (!res.ok) throw new Error("spotify fetch fail");
+        if (!res.ok) throw new Error("Playlist fetch failed");
+
         const data = await res.json();
-        const items = (data.items || [])
-          .map((i) => i.track)
-          .filter(Boolean)
-          .map((t) => ({
-            id: t.id,
-            name: t.name,
-            artists: t.artists?.map((a) => a.name).join(", ") || "",
-            albumArt: t.album?.images?.[0]?.url,
-            externalUrl: t.external_urls?.spotify,
-          }));
+        const items = (data.items || []).filter(Boolean);
         localStorage.setItem(cacheKey, JSON.stringify(items));
-        setTracks(items);
-      } catch {
-        setNeedLogin(true);
+        if (!cancelled) setTracks(items);
+      } catch (e) {
+        console.error("SpotifyDailyThree load error:", e);
+        if (!cancelled) setTracks([]); // fail silent, no ugly UI
       }
     })();
+
+    return () => { cancelled = true; };
   }, [todayKey]);
 
   const picks = useMemo(() => {
@@ -75,16 +66,6 @@ export default function SpotifyDailyThree() {
     return [...indices].map((i) => tracks[i]);
   }, [tracks, todayKey]);
 
-  if (needLogin) {
-    return (
-      <div className="sd3-wrap">
-        <button className="btn--spike" onClick={startLogin}>
-          Connect Spotify
-        </button>
-      </div>
-    );
-  }
-
   if (!picks.length) return null;
 
   return (
@@ -96,15 +77,15 @@ export default function SpotifyDailyThree() {
           href={t.externalUrl}
           target="_blank"
           rel="noreferrer"
+          aria-label={`${t.name} by ${t.artists}`}
         >
-          <img src={t.albumArt} alt={t.name} />
+          {t.albumArt && <img src={t.albumArt} alt={t.name} />}
           <div className="sd3-text">
             <h4>{t.name}</h4>
             <p>{t.artists}</p>
           </div>
         </a>
       ))}
-
     </div>
   );
 }

@@ -24,9 +24,6 @@ import Project6 from "./pages/projects/Project6";
 import Project7 from "./pages/projects/Project7";
 import Project8 from "./pages/projects/Project8";
 
-// Spotify OAuth callback
-import SpotifyCallback from "./pages/SpotifyCallback";
-
 function App() {
   return (
     <Router>
@@ -49,9 +46,6 @@ function App() {
             <Route path="/projects/project6" element={<Project6 />} />
             <Route path="/projects/project7" element={<Project7 />} />
             <Route path="/projects/project8" element={<Project8 />} />
-
-            {/* Spotify login redirect page */}
-            <Route path="/callback" element={<SpotifyCallback />} />
           </Routes>
         </main>
         <Footer />
