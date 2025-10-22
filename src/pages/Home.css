@@ -1,16 +1,33 @@
-/* ========== GENERAL LAYOUT ========== */
+:root{
+  --radius-0: 0;
+  --radius-sm: 6px;     /* only for tiny bits if needed */
+  --radius-md: 0;       /* default: sharp */
+  --card-bg: rgba(255,255,255,0.85);
+  --edge: 14px;         /* notch size for spiky-card */
+  --tooth: 8px;         /* sawtooth height for spiky buttons */
+}
+
+/* ====== LAYOUT ====== */
 .home-wrapper {
   position: relative;
-  width: 100vw;
-  overflow: hidden;
+  width: 100%;          /* % avoids 100vw scrollbar lock */
+  overflow: visible;    /* allow page to grow/scroll */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 8rem;
+  padding-top: 10rem;
   z-index: 1;
 }
 
-/* ========== BACKGROUND GRAPHICS ========== */
+.home.container {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 1.5rem;
+  display: block;
+  position: relative;
+}
+
+/* ====== BACKGROUND ART (unchanged visuals) ====== */
 .background-graphics {
   position: absolute;
   top: 0%;
@@ -24,7 +41,7 @@
 
 .background-graphics img,
 .bg-graphic {
-  position:fixed;
+  position: fixed;
   pointer-events: none;
   opacity: 0.08;
   mix-blend-mode: soft-light;
@@ -32,8 +49,8 @@
   z-index: 0;
 }
 
-/* Repeated and layered placement for texture */
-.bg-graphic-1 { top: 10%; left: 5%; width: 250px; }
+/* helpers from your original */
+.bg-graphic-1 { top: 20%; left: 5%; width: 250px; }
 .bg-graphic-2 { top: 30%; right: 10%; width: 300px; }
 .bg-graphic-3 { bottom: 10%; left: 20%; width: 280px; }
 .bg-graphic-4 { top: 50%; right: 25%; width: 200px; }
@@ -42,14 +59,15 @@
 
 .spray-bg {
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  width: 320px;
   opacity: 30%;
   z-index: 0;
 }
 
+/* ====== HERO ====== */
 .home-logo-container {
   display: flex;
   justify-content: center;
@@ -64,139 +82,469 @@
   height: auto;
   transition: transform 0.2s ease;
 }
-
-.home-logo:hover {
-  transform: scale(1.05);
-}
-
-
+.home-logo:hover { transform: scale(1.05); }
 
 .hero {
   text-align: center;
-  margin-bottom: 6rem;
+  margin-bottom: 7rem;
   z-index: 2;
   position: relative;
   padding: 1rem 2rem;
 }
 
 .hero-title {
-  font-size: 5rem;
+  font-size: 4.25rem;
   color: var(--black);
   font-weight: 900;
   text-shadow: 0 4px 20px rgba(255, 45, 175, 1.4);
   animation: fadeInUp 1s ease-out;
   position: relative;
   z-index: 3;
+  line-height: 1.05;
 }
 
 .hero-tagline {
-  font-size: 1.4rem;
-  max-width: 650px;
-  margin: 1rem auto 2rem;
+  font-size: 1.25rem;
+  max-width: 720px;
+  margin: 1rem auto 2.25rem;
   color: var(--black);
   position: relative;
   z-index: 3;
 }
 
-.hero-btn {
-  background-color: var(--black);
-  color: var(--pink-soft);
-  padding: 0.75rem 2rem;
-  font-weight: bold;
-  border-radius: 999px;
+/* ====== SPIKY BUTTONS ====== */
+.hero-btn,
+.view-project,
+.preview-link {
+  border-radius: var(--radius-md);
   text-decoration: none;
-  box-shadow: 0 0 15px rgba(255, 45, 175, 0.4);
-  transition: 0.2s ease-in-out;
+  font-weight: 700;
+}
+
+.btn--spike {
   position: relative;
-  z-index: 3;
+  border-radius: 0;
+  padding: 0.9rem 2rem;
+  background: var(--black);
+  color: var(--pink-soft);
+  /* zig-zag bottom edge */
+  -webkit-mask:
+    linear-gradient(#000 0 0) top,
+    repeating-linear-gradient(-45deg,#000 0 var(--tooth),transparent 0 calc(var(--tooth)*2)) bottom/100% var(--tooth) no-repeat;
+  mask:
+    linear-gradient(#000 0 0) top,
+    repeating-linear-gradient(-45deg,#000 0 var(--tooth),transparent 0 calc(var(--tooth)*2)) bottom/100% var(--tooth) no-repeat;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+  display: inline-block;
+}
+.btn--spike:hover {
+  background: var(--pink-primary);
+  color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(255,45,175,0.25);
 }
 
-.hero-btn:hover {
-  background-color: var(--pink-primary);
-  color: black;
-  transform: scale(1.05);
-}
-
-
+/* ====== FEATURED PROJECT ====== */
 .featured-project {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.78);
   border: 1px solid var(--pink-soft);
   backdrop-filter: blur(6px);
-  padding: 2rem;
-  border-radius: 0.75rem;
-  max-width: 680px;
+  padding: 2.25rem;
+  border-radius: var(--radius-md);
+  max-width: 740px;
   text-align: center;
-  margin: 2rem auto 6rem;
+  margin: 2rem auto 6.5rem;
   z-index: 2;
   position: relative;
 }
 
 .section-heading {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 600;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.25rem;
   color: var(--black);
+  position: relative;
+  display: inline-block;
+  padding-bottom: .4rem;
+}
+
+/* spiky underline accent under headings */
+.section-heading::after,
+.preview-section h2::after {
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height: 6px;
+  background:
+    conic-gradient(from 45deg, var(--pink-primary) 0 25%, transparent 0 50%) left/16px 100% repeat-x;
+  opacity:.9;
 }
 
 .project-card {
-  padding: 1.5rem;
+  padding: 1.6rem;
   background: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
   transition: transform 0.2s ease;
+  border: 1px solid var(--pink-soft);
 }
-
-.project-card:hover {
-  transform: translateY(-4px);
-}
+.project-card:hover { transform: translateY(-4px); }
 
 .home-project-title {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--pink-primary);
 }
-
-
-
 .project-desc {
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  margin-bottom: 1.1rem;
   color: #333;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-.view-project {
-  font-size: 0.9rem;
-  padding: 0.5rem 1.25rem;
-  background-color: var(--pink-soft);
+/* ====== PREVIEW SECTIONS (spiky + fade-in on scroll) ====== */
+.preview-section {
+  padding: 6.5rem 2.2rem;
+  text-align: center;
+  background: var(--card-bg);
+  margin: 6rem auto;
+  max-width: 960px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  position: relative;
+  z-index: 2;
+
+  /* fade-in base */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+.preview-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.preview-section h2 {
+  font-size: 2.1rem;
+  color: var(--pink-primary);
+  margin-bottom: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: .4rem;
+}
+.preview-section p {
   color: var(--black);
-  border-radius: 999px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
+  margin: 0 auto 1.7rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  max-width: 46ch; /* comfy reading width */
 }
 
-.view-project:hover {
-  background-color: var(--pink-primary);
-  color: white;
+/* ====== NOTCHED / SPIKY CARDS ====== */
+.spiky-card {
+  position: relative;
+  --e: var(--edge);
+  -webkit-mask:
+    radial-gradient(circle at 0 0, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) top left,
+    radial-gradient(circle at 100% 0, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) top right,
+    radial-gradient(circle at 100% 100%, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) bottom right,
+    radial-gradient(circle at 0 100%, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) bottom left;
+  -webkit-mask-size: 51% 51%;
+  -webkit-mask-repeat: no-repeat;
+  mask:
+    radial-gradient(circle at 0 0, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) top left,
+    radial-gradient(circle at 100% 0, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) top right,
+    radial-gradient(circle at 100% 100%, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) bottom right,
+    radial-gradient(circle at 0 100%, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) bottom left;
+  mask-size: 51% 51%;
+  mask-repeat: no-repeat;
+  border: 1px solid var(--pink-soft);
 }
 
-
+/* ====== ANIMATIONS ====== */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
-@keyframes slowSpin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ====== GLOBAL SAFETY (scroll on) ====== */
+html, body, #root {
+  height: auto;
+  overflow: auto;
 }
+
+.main-content, .app-wrapper {
+  min-height: auto;
+  height: auto;
+  overflow: visible;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+  .hero-title { font-size: 3.6rem; }
+  .featured-project { margin-bottom: 6rem; }
+  .preview-section { margin: 5rem auto; }
+}
+@media (max-width: 768px) {
+  .home-wrapper { padding-top: 8rem; }
+  .hero-title { font-size: 3rem; }
+  .hero-tagline { font-size: 1.05rem; }
+  .preview-section { padding: 4.5rem 1.5rem; max-width: 92%; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .preview-section { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+/* SVG section headers (About, Work, Contact) */
+.svg-header {
+  width: 220px;   /* adjust this until it feels right */
+  height: auto;
+  display: block;
+  margin: 0 auto 1.5rem; /* centers and spaces from text */
+}
+/* ====== LEFT WORDS / RIGHT IMAGE BOX (simple, screen-fitting) ====== */
+.split-full {
+  position: relative;
+  width: 100%;                         /* stays inside page width */
+  min-height: min(86vh, 900px);
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;    /* left words / right box */
+  align-items: center;
+  gap: min(6vw, 56px);
+  padding: clamp(42px, 6vh, 90px) 0;   /* vertical breathing */
+}
+
+/* optional thin divider like the inspo */
+/* .minimal-split {
+  border-top: 1px solid rgba(0,0,0,.2);
+} */
+.minimal-split + .minimal-split {
+  border-top: 1px solid rgba(0,0,0,.2);
+}
+
+/* columns */
+.split-col { width: 100%; }
+
+.split-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding-left: 1.5rem;                /* slight nudge from left */
+}
+
+.split-right {
+  display: grid;
+  place-items: center;                  /* centers BoxRotator */
+  padding-right: 1.5rem;
+}
+
+/* typography (keeps your vibe) */
+.split-title {
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  font-weight: 900;
+  color: var(--black);
+  margin: 0;
+}
+.split-sub {
+  margin: .25rem 0 .75rem 0;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--black);
+  opacity: .85;
+}
+.split-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+}
+.split-links a {
+  color: var(--pink-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+.split-links a:hover { color: var(--pink-hot); text-decoration: underline; }
+
+/* responsive */
+@media (max-width: 900px) {
+  .split-full {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    min-height: auto;
+    padding: 40px 0;
+  }
+  .split-left, .split-right { padding: 0 1rem; }
+}
+/* ===== FLOW SPINE (guides the eye down) ===== */
+.flow {
+  position: relative;
+}
+
+/* vertical line runs down the center area but stays in flow */
+.flow::before {
+  content: "";
+  position: absolute;          /* not fixed anymore! */
+  top: 0;
+  bottom: 0;
+  left: clamp(56%, 58vw, 62%);
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.18) 10%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.18) 90%,
+    transparent 100%
+  );
+  z-index: 1;                  /* above bg graphics but below text */
+  pointer-events: none;
+}
+
+/* section marker dots */
+.flow-node {
+  position: absolute;
+  left: clamp(56%, 58vw, 62%);
+  transform: translateX(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--pink-primary);
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.25);
+  z-index: 2;
+}
+
+/* add a small downward-connecting line per section */
+.split-full {
+  position: relative;
+}
+.split-full::after {
+  content: "";
+  position: absolute;
+  left: clamp(56%, 58vw, 62%);
+  bottom: -60px;
+  width: 1px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.18);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* heading rule pointing to the spine */
+.rule-to-spine {
+  position: relative;
+  display: inline-block;
+  padding-right: clamp(24px, 4vw, 60px);
+}
+.rule-to-spine::after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  left: 100%;
+  height: 1px;
+  width: clamp(80px, 14vw, 180px);
+  background: rgba(0, 0, 0, 0.24);
+  transform: translateY(-50%);
+}
+
+@media (max-width: 900px) {
+  .flow::before { display: none; }
+  .flow-node { display: none; }
+  .rule-to-spine::after { display: none; }
+  .split-full::after { display: none; }
+}
+
+/* ===== FLOW SPINE (guides the eye down) ===== */
+.flow {
+  position: relative;
+}
+
+/* vertical line runs down the center area but stays in flow */
+.flow::before {
+  content: "";
+  position: absolute;          /* not fixed anymore! */
+  top: 0;
+  bottom: 0;
+  left: clamp(56%, 58vw, 62%);
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.18) 10%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.18) 90%,
+    transparent 100%
+  );
+  z-index: 1;                  /* above bg graphics but below text */
+  pointer-events: none;
+}
+
+/* section marker dots */
+.flow-node {
+  position: absolute;
+  left: clamp(56%, 58vw, 62%);
+  transform: translateX(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--pink-primary);
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.25);
+  z-index: 2;
+}
+
+/* add a small downward-connecting line per section */
+.split-full {
+  position: relative;
+}
+.split-full::after {
+  content: "";
+  position: absolute;
+  left: clamp(56%, 58vw, 62%);
+  bottom: -60px;
+  width: 1px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.18);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* heading rule pointing to the spine */
+.rule-to-spine {
+  position: relative;
+  display: inline-block;
+  padding-right: clamp(24px, 4vw, 60px);
+}
+.rule-to-spine::after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  left: 100%;
+  height: 1px;
+  width: clamp(80px, 14vw, 180px);
+  background: rgba(0, 0, 0, 0.24);
+  transform: translateY(-50%);
+}
+
+@media (max-width: 900px) {
+  .flow::before { display: none; }
+  .flow-node { display: none; }
+  .rule-to-spine::after { display: none; }
+  .split-full::after { display: none; }
+}
+/* Make SVG header images align like text headings */
+.split-title-img {
+  display: block;
+  max-width: 320px;     /* tweak if you want smaller/bigger */
+  width: 100%;
+  height: auto;
+  line-height: 0;
+}
+
+/* If your heading had special underline or rule-to-spine effects,
+   keep the existing h2 class so those still apply around the image. */

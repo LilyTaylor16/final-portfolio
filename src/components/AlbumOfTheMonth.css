@@ -1,0 +1,23 @@
+/* src/components/AlbumOfTheMonth.css */
+.aotm { margin-top: 2rem; }
+
+.aotm__title {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(90deg, var(--pink-primary), var(--pink-hot));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.aotm__embed {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  background: var(--surface, #111);
+}
+
+.aotm__blurb {
+  margin-top: 0.75rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}

@@ -1,0 +1,31 @@
+.sd3-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+    gap: 16px;
+  }
+  .sd3-card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--black);
+  }
+  .sd3-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+  .sd3-text h4 {
+    font-size: 0.98rem;
+    margin: 0 0 2px 0;
+    font-weight: 800;
+  }
+  .sd3-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: .8;
+  }
+  @media (max-width: 700px) {
+    .sd3-wrap { grid-template-columns: 1fr; }
+  }
+  

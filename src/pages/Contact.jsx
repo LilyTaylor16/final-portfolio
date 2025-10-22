@@ -47,17 +47,19 @@ function Contact() {
       <img src={star2} className="contact-bg star2" alt="star2" />
 
       <section className="contact container">
-        <h1 className="contact-title">Get in Touch</h1>
+        <h1 className="contact-title underline--spike">Get in Touch</h1>
         <p className="contact-text">
           Have a project idea, a question, or just want to connect? Drop me a message below.
         </p>
 
-        <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
+        <div className="contact-card spiky-card">
+          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit" className="btn--spike">Send Message</button>
+          </form>
+        </div>
 
         <p className="contact-footer-text">
           Or email me directly at <a href="mailto:lily444taylor@gmail.com">lily444taylor@gmail.com</a>
