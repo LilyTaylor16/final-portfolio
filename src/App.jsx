@@ -15,17 +15,14 @@ import Work from "./pages/Work";
 import Contact from "./pages/Contact";
 
 // Project Pages
-import PunkPucker from "./pages/projects/PunkPucker";
-import Zine from "./pages/projects/Zine";
-import Deftones from "./pages/projects/Deftones";
-import OrbitStudios from "./pages/projects/Orbit";
+import PunkPucker from './pages/projects/PunkPucker';
+import Zine from './pages/projects/Zine';
+import Deftones from './pages/projects/Deftones';
+import OrbitStudios from './pages/projects/Orbit';
 import Project5 from "./pages/projects/Project5";
 import Project6 from "./pages/projects/Project6";
 import Project7 from "./pages/projects/Project7";
 import Project8 from "./pages/projects/Project8";
-
-// Spotify OAuth callback
-import SpotifyCallback from "./pages/SpotifyCallback";
 
 function App() {
   return (
@@ -34,13 +31,10 @@ function App() {
         <Header />
         <main className="main-content">
           <Routes>
-            {/* Main Pages */}
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/work" element={<Work />} />
             <Route path="/contact" element={<Contact />} />
-
-            {/* Project Pages */}
             <Route path="/projects/punkpucker" element={<PunkPucker />} />
             <Route path="/projects/zine" element={<Zine />} />
             <Route path="/projects/deftones" element={<Deftones />} />
@@ -49,9 +43,6 @@ function App() {
             <Route path="/projects/project6" element={<Project6 />} />
             <Route path="/projects/project7" element={<Project7 />} />
             <Route path="/projects/project8" element={<Project8 />} />
-
-            {/* Spotify login redirect page */}
-            <Route path="/callback" element={<SpotifyCallback />} />
           </Routes>
         </main>
         <Footer />
