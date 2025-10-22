@@ -17,9 +17,9 @@ import about5 from "../assets/about/5.jpg";
 import about6 from "../assets/about/6.jpg";
 
 // ---- NEW: Hand-drawn SVG headers (homepage only) ----
-import WorkHeader from "../assets/graphics/headers/WorkBlack.svg";
-import AboutHeader from "../assets/graphics/headers/AboutBlack.svg";
-import ContactHeader from "../assets/graphics/headers/ContactBlack.svg";
+import WorkHeader from "../assets/graphics/headers/workblack.svg";
+import AboutHeader from "../assets/graphics/headers/aboutblack.svg";
+import ContactHeader from "../assets/graphics/headers/contactblack.svg";
 
 function Home() {
   // keep your fade-in utility, harmless
