@@ -1,0 +1,27 @@
+on: 
+  push:
+    branches: [ deploy ]
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🚀 Deploy React
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v4
+      - name: Use Node.js 20
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+      - name: ⛏️Build Project
+        run: |
+          npm install
+          npm run build
+      - name: 📁 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: "dist/"
+          server-dir: "public_html/"
