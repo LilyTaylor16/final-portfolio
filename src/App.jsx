@@ -4,6 +4,9 @@ import "./styles/global.css";
 import "./App.css";
 import "./styles/variables.css";
 
+// Helmet
+import { Helmet } from "react-helmet";
+
 // Layout
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,6 +16,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Work from "./pages/Work";
 import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
 // Project Pages
 import PunkPucker from "./pages/projects/PunkPucker";
@@ -30,6 +34,38 @@ import SpotifyCallback from "./pages/SpotifyCallback";
 function App() {
   return (
     <Router>
+      {/* GLOBAL META + OG TAGS */}
+      <Helmet>
+        {/* Favicon */}
+        <link rel="icon" type="image/png" href="/favicon.png" />
+
+        {/* Primary Meta */}
+        <title>Lily Taylor | Designer & Creative Technologist</title>
+        <meta
+          name="description"
+          content="Portfolio of Lily Taylor — a creative designer building bold, expressive, alternative digital experiences through UX/UI, branding, motion, and experimental visuals."
+        />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Lily Taylor | Portfolio" />
+        <meta
+          property="og:description"
+          content="Explore experimental design, branding, motion, UX/UI, and creative projects by Lily Taylor."
+        />
+        <meta property="og:url" content="https://lily-taylor.ca" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://lily-taylor.ca/favicon.png" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Lily Taylor | Portfolio" />
+        <meta
+          name="twitter:description"
+          content="Expressive, bold, alternative visual design — view Lily Taylor's work."
+        />
+        <meta name="twitter:image" content="https://lily-taylor.ca/favicon.png" />
+      </Helmet>
+
       <div className="app-wrapper">
         <Header />
         <main className="main-content">
@@ -50,8 +86,11 @@ function App() {
             <Route path="/projects/project7" element={<Project7 />} />
             <Route path="/projects/project8" element={<Project8 />} />
 
-            {/* Spotify login redirect page */}
+            {/* Spotify Redirect */}
             <Route path="/callback" element={<SpotifyCallback />} />
+
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />

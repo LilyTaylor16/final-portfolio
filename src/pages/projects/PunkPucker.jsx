@@ -2,104 +2,249 @@ import React from "react";
 import "../../styles/Project.css";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Logo from "../../assets/images/logo.svg";
 
 function PunkPucker() {
   return (
-    <div className="project-wrapper">
+    <div className="project-page project-wrapper">
       <Helmet>
-        <title>Punk Pucker | Sour Beer Branding by Lily Taylor</title>
+        <title>Punk & Pucker | Sour Beer Branding by Lily Taylor</title>
         <meta
           name="description"
-          content="Explore Punk Pucker — a pop-art sour beer brand identity designed by Lily Taylor. Bold typography, electric colors, rebellious energy, and expressive packaging collide."
+          content="A start-to-finish look at Punk & Pucker, a fictional sour beer brand developed and refined throughout my program at BCIT. Includes logo exploration, packaging, box design, and Illustrator assets."
         />
       </Helmet>
 
+      {/* Floating logo back to home */}
       <Link to="/" className="floating-logo">
-        <img src="/logo.svg" alt="Lily Taylor Logo" />
+        <img src={Logo} alt="Lily Taylor portfolio logo" />
       </Link>
 
-      <img src="/Projects/punkpucker/punkpucker-logo.png" alt="Punk Pucker Logo" className="punk-logo punk-logo1" />
-      <img src="/Projects/punkpucker/punkpucker-logo.png" alt="Punk Pucker Logo" className="punk-logo punk-logo2" />
-      <img src="/Projects/punkpucker/punkpucker-logo.png" alt="Punk Pucker Logo" className="punk-logo punk-logo3" />
-      <img src="/Projects/punkpucker/punkpucker-logo.png" alt="Punk Pucker Logo" className="punk-logo punk-logo4" />
+      {/* BACK TO WORK PAGE BUTTON */}
+      <Link to="/work" className="back-to-work-btn">
+        ← Back to Work
+      </Link>
 
-      <section className="project-intro" style={{ "--section-index": 0 }}>
-        <h1 className="project-title">Punk Pucker</h1>
-        <p className="project-description">
-          Punk Pucker is more than a sour beer brand — it’s a loud, unapologetic celebration of design rebellion.
-          I created this brand identity as a way to experiment with expressive typography, unexpected colour combinations,
-          and dynamic layouts. I used Illustrator for everything from hand-drawing logos to refining layouts,
-          and went through dozens of iterations — exploring what "punk" could look like when bottled.
-        </p>
-        <p className="project-description">
-          This project pushed me to dig into market research, design theory, and packaging trends while trusting
-          my instincts and aesthetic judgment. It’s one of the projects I’m most proud of — not just because it looks cool,
-          but because it captures my process: bold ideas, experimentation, and obsessive visual refinement.
-        </p>
+      {/* Background floating logos (decorative) */}
+      <img
+        src="/Projects/punkpucker/punkpucker-logo.png"
+        className="punk-logo punk-logo1"
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        src="/Projects/punkpucker/punkpucker-logo.png"
+        className="punk-logo punk-logo2"
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        src="/Projects/punkpucker/punkpucker-logo.png"
+        className="punk-logo punk-logo3"
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        src="/Projects/punkpucker/punkpucker-logo.png"
+        className="punk-logo punk-logo4"
+        alt=""
+        aria-hidden="true"
+      />
+
+      {/* HERO – final cans first */}
+      <section className="project-hero" style={{ "--section-index": 0 }}>
+        <div className="project-hero-media cans-hero">
+          <img src="/Projects/punkpucker/heartbreaker-can.png" alt="Heartbreaker sour ale can" />
+          <img src="/Projects/punkpucker/hyper-zest-can.png" alt="Hyper Zest sour ale can" />
+          <img src="/Projects/punkpucker/zap-can.png" alt="Zap sour ale can" />
+        </div>
+
+        <div className="project-hero-text">
+          <h1 className="project-title">Punk & Pucker</h1>
+          <p className="project-description">
+            Punk & Pucker is a fictional sour beer brand I’ve been evolving throughout my time at BCIT.
+            It started as a small Photoshop assignment and slowly turned into a full visual system with cans,
+            box packaging, patterns, and mockups.
+          </p>
+          <p className="project-description">
+            This project shows how I work through branding: starting with messy ideas, pushing them too far,
+            then refining them into something bold, cohesive, and shelf-ready.
+          </p>
+        </div>
       </section>
 
+      {/* FINAL CAN LINEUP */}
       <section className="project-section" style={{ "--section-index": 1 }}>
-        <h2>Logo Development</h2>
+        <h2>Final Flavour Lineup</h2>
         <p>
-          The logo was created using a custom hand-drawn font, built with the Pen Tool to capture a gritty,
-          handmade feel. It features a pair of lips and warped lettering that reflects the mouth-puckering
-          flavour of sour beer.
+          Heartbreaker, Hyper Zest, and Zap—each flavour has its own palette, but all three share the same neon,
+          chaotic, punchy energy.
         </p>
-      </section>
-
-      <section className="project-section" style={{ "--section-index": 2 }}>
-        <h2>Fonts</h2>
-        <p>
-          Two custom fonts were used: Subway New York SC and Subway New York Std, paired with a fully hand-built
-          custom logotype. This combination of clean sans-serifs and chaotic brush typography supports the brand’s contrast of order vs. rebellion.
-        </p>
-      </section>
-
-      <section className="project-section" style={{ "--section-index": 3 }}>
-        <h2>Colour Palette</h2>
-        <p>
-          The palette is loud, electric, and youthful — a combination of neon pinks, bright greens, soft aquas,
-          and intense yellows, grounded by black for maximum contrast.
-        </p>
-        <ul className="color-palette">
-          <li style={{ background: "#ff0080" }}></li>
-          <li style={{ background: "#c80076" }}></li>
-          <li style={{ background: "#ff00ff" }}></li>
-          <li style={{ background: "#ff1493" }}></li>
-          <li style={{ background: "#dfff00" }}></li>
-          <li style={{ background: "#99ff00" }}></li>
-          <li style={{ background: "#00eaff" }}></li>
-          <li style={{ background: "#000000" }}></li>
-        </ul>
-      </section>
-
-      <section className="project-section" style={{ "--section-index": 4 }}>
-        <h2>Can Labels</h2>
-        <p>Each flavour received a unique label with a consistent layout and distinct colour scheme:</p>
-        <div className="project-images">
-          <img src="/Projects/punkpucker/heartbreaker.png" alt="Heartbreaker Label" />
-          <img src="/Projects/punkpucker/hyper-zest.png" alt="Hyper Zest Label" />
-          <img src="/Projects/punkpucker/zap.png" alt="Zap Label" />
+        <div className="project-images project-gallery">
+          <img src="/Projects/punkpucker/heartbreaker.png" alt="Heartbreaker flat can artwork" />
+          <img src="/Projects/punkpucker/hyper-zest.png" alt="Hyper Zest flat can artwork" />
+          <img src="/Projects/punkpucker/zap.png" alt="Zap flat can artwork" />
         </div>
       </section>
 
-      <section className="project-section" style={{ "--section-index": 5 }}>
+      {/* TERM 1 ORIGINS */}
+      <section className="project-section project-split" style={{ "--section-index": 2 }}>
+        <div className="project-media">
+          <img src="/Projects/punkpucker/firstversion.png" alt="First Punk & Pucker business card concept" />
+        </div>
+        <div className="project-text">
+          <h2>Where It Started</h2>
+          <p>
+            The very first Punk & Pucker artifact—a simple business card from a Term 1 Photoshop brief—sparked
+            the brand direction: neon pink, lips, and bold type.
+          </p>
+          <p>
+            It was flat and chaotic, but it planted the seed for everything that came after.
+          </p>
+        </div>
+      </section>
+
+      {/* LOGO SKETCHES */}
+      <section className="project-section project-split reverse" style={{ "--section-index": 3 }}>
+        <div className="project-media">
+          <img src="/Projects/punkpucker/logosketch.jpg" alt="Punk & Pucker logo sketches" />
+        </div>
+        <div className="project-text">
+          <h2>Logo Exploration</h2>
+          <p>
+            I experimented with citrus shapes, lips, and chunky lettering to find something fizzy, loud,
+            and recognizably “Punk & Pucker.”
+          </p>
+        </div>
+      </section>
+
+      {/* PUSHING LOGO TOO FAR */}
+      <section
+        className="project-section project-split logo-experiment-section"
+        style={{ "--section-index": 4 }}
+      >
+        <div className="project-media">
+          <img src="/Projects/punkpucker/punklogomaybe.png" alt="Early mouth-based logo exploration" />
+        </div>
+        <div className="project-text">
+          <h2>Pushing the Logo Too Far</h2>
+          <p>
+            This version was dramatic and chaotic—almost “Rocky Horror.” It helped me understand what parts to keep
+            and what to simplify.
+          </p>
+        </div>
+      </section>
+
+      {/* FINAL LOGO (SMALLER) */}
+      <section
+        className="project-section project-split logo-final-section"
+        style={{ "--section-index": 5 }}
+      >
+        <div className="project-media logo-final-media">
+          <img src="/Projects/punkpucker/punkpucker-logo.png" alt="Final Punk & Pucker logo" />
+        </div>
+        <div className="project-text">
+          <h2>Settling on the Final Logo</h2>
+          <p>
+            The final mark keeps the lip silhouette but tones down the chaos. It’s loud, fun, and legible at small sizes.
+          </p>
+        </div>
+      </section>
+
+      {/* BOX DIELINE */}
+      <section className="project-section project-split reverse" style={{ "--section-index": 6 }}>
+        <div className="project-media">
+          <img src="/Projects/punkpucker/boxrawpsd.png" alt="Punk & Pucker 12-pack box dieline" />
+        </div>
+        <div className="project-text">
+          <h2>12-Pack Box Design</h2>
+          <p>
+            A full dieline mockup exploring readability, hierarchy, and how patterns wrap around corners.
+          </p>
+        </div>
+      </section>
+
+      {/* VIDEO */}
+      <section className="project-section" style={{ "--section-index": 7 }}>
+        <div className="project-media">
+          <video className="project-video" controls src="/Projects/punkpucker/boxview.mp4" />
+        </div>
+        <p className="project-caption">360° mockup of the 12-pack.</p>
+      </section>
+
+      {/* RIOT → HEARTBREAKER */}
+      <section className="project-section" style={{ "--section-index": 8 }}>
+        <h2>From Riot to Heartbreaker</h2>
+        <p>
+          The Riot can was my first attempt—exciting but messy. Heartbreaker refined that chaos into structure.
+        </p>
+
+        <div className="project-images evolution-row">
+          <img
+            className="small-exploration"
+            src="/Projects/punkpucker/candesignmaybe.png"
+            alt="Early Riot can design exploration"
+          />
+          <img
+            src="/Projects/punkpucker/heartbreaker.png"
+            alt="Heartbreaker final can artwork"
+          />
+        </div>
+      </section>
+
+      {/* FINAL MOCKUPS */}
+      <section className="project-section" style={{ "--section-index": 9 }}>
         <h2>Final Can Mockups</h2>
-        <div className="project-images">
-          <img src="/Projects/punkpucker/heartbreaker-can.png" alt="Heartbreaker Can" />
-          <img src="/Projects/punkpucker/hyper-zest-can.png" alt="Hyper Zest Can" />
-          <img src="/Projects/punkpucker/zap-can.png" alt="Zap Can" />
+        <div className="project-images project-gallery">
+          <img src="/Projects/punkpucker/heartbreaker-can.png" alt="Heartbreaker sour beer can mockup" />
+          <img src="/Projects/punkpucker/hyper-zest-can.png" alt="Hyper Zest sour beer can mockup" />
+          <img src="/Projects/punkpucker/zap-can.png" alt="Zap sour beer can mockup" />
         </div>
       </section>
 
-      <section className="project-section" style={{ "--section-index": 6 }}>
-        <h2>Sticker + Poster Mockups</h2>
+      {/* APPLICATIONS */}
+      <section className="project-section" style={{ "--section-index": 10 }}>
+        <h2>Applications & Mockups</h2>
+        <div className="project-images project-gallery">
+          <img src="/Projects/punkpucker/cardmockup1.png" alt="Punk & Pucker business card mockup front" />
+          <img src="/Projects/punkpucker/cardmockup2.png" alt="Punk & Pucker business card mockup back" />
+          <img src="/Projects/punkpucker/sticker-mockup.jpg" alt="Punk & Pucker sticker mockup" />
+        </div>
+      </section>
+
+      {/* REFLECTION */}
+      <section className="project-section project-reflection" style={{ "--section-index": 11 }}>
+        <h2>Reflection</h2>
         <p>
-          These applications explore how Punk Pucker could live in real environments — used as
-          posters, stickers, and graphics in urban spaces with grungy, rebellious aesthetics.
+          Punk & Pucker has followed me across courses and represents a huge shift in how I approach branding:
+          emotional, neon, chaotic—but intentional underneath.
         </p>
-        <div className="project-images">
-          <img src="/Projects/punkpucker/sticker-mockup.jpg" alt="Sticker Mockup" />
+      </section>
+
+      {/* STYLE GUIDE – EMBEDDED PDF */}
+      <section
+        className="project-section styleguide-section"
+        style={{ "--section-index": 12 }}
+      >
+        <h2>Brand Style Guide</h2>
+
+        <div className="styleguide-wrapper">
+          <iframe
+            className="styleguide-frame"
+            src="/Projects/punkpucker/punkpuckerpres.pdf#page=1&zoom=70"
+            title="Punk & Pucker Style Guide PDF"
+          />
+          <p className="project-caption">
+            If the viewer doesn’t load,&nbsp;
+            <a
+              href="/Projects/punkpucker/punkpuckerpres.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              open the full style guide
+            </a>
+            .
+          </p>
         </div>
       </section>
     </div>

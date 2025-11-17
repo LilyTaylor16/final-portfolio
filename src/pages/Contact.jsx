@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Contact.css';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo.svg';
@@ -18,6 +18,13 @@ import star1 from '../assets/graphics/star1.svg';
 import star2 from '../assets/graphics/star2.svg';
 
 function Contact() {
+  const [submitStatus, setSubmitStatus] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitStatus('Your message has been recorded on this page. The form is front end only right now so please use the email link below if you need to reach me.');
+  };
+
   return (
     <div className="contact-wrapper">
       <Helmet>
@@ -29,22 +36,26 @@ function Contact() {
       </Helmet>
 
       <Link to="/" className="contact-logo-link">
-        <img src={Logo} alt="Home Logo" className="contact-logo-img" />
+        <img
+          src={Logo}
+          alt="Lily Taylor portfolio logo"
+          className="contact-logo-img"
+        />
       </Link>
 
-      {/* Background graphics */}
-      <img src={spray1} className="contact-bg spray1" alt="spray1" />
-      <img src={spray2} className="contact-bg spray2" alt="spray2" />
-      <img src={spray3} className="contact-bg spray3" alt="spray3" />
-      <img src={spray4} className="contact-bg spray4" alt="spray4" />
-      <img src={spray5} className="contact-bg spray5" alt="spray5" />
-      <img src={spray6} className="contact-bg spray6" alt="spray6" />
-      <img src={spray7} className="contact-bg spray7" alt="spray7" />
-      <img src={circles} className="contact-bg circles" alt="circles" />
-      <img src={linespray1} className="contact-bg linespray1" alt="linespray1" />
-      <img src={squares} className="contact-bg squares" alt="squares" />
-      <img src={star1} className="contact-bg star1" alt="star1" />
-      <img src={star2} className="contact-bg star2" alt="star2" />
+      {/* Background graphics (decorative) */}
+      <img src={spray1} className="contact-bg spray1" alt="" aria-hidden="true" />
+      <img src={spray2} className="contact-bg spray2" alt="" aria-hidden="true" />
+      <img src={spray3} className="contact-bg spray3" alt="" aria-hidden="true" />
+      <img src={spray4} className="contact-bg spray4" alt="" aria-hidden="true" />
+      <img src={spray5} className="contact-bg spray5" alt="" aria-hidden="true" />
+      <img src={spray6} className="contact-bg spray6" alt="" aria-hidden="true" />
+      <img src={spray7} className="contact-bg spray7" alt="" aria-hidden="true" />
+      <img src={circles} className="contact-bg circles" alt="" aria-hidden="true" />
+      <img src={linespray1} className="contact-bg linespray1" alt="" aria-hidden="true" />
+      <img src={squares} className="contact-bg squares" alt="" aria-hidden="true" />
+      <img src={star1} className="contact-bg star1" alt="" aria-hidden="true" />
+      <img src={star2} className="contact-bg star2" alt="" aria-hidden="true" />
 
       <section className="contact container">
         <h1 className="contact-title underline--spike">Get in Touch</h1>
@@ -53,16 +64,25 @@ function Contact() {
         </p>
 
         <div className="contact-card spiky-card">
-          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+          <form className="contact-form" onSubmit={handleSubmit}>
             <input type="text" placeholder="Your Name" required />
             <input type="email" placeholder="Your Email" required />
             <textarea placeholder="Your Message" required></textarea>
             <button type="submit" className="btn--spike">Send Message</button>
+
+            {submitStatus && (
+              <p className="contact-status">
+                {submitStatus}
+              </p>
+            )}
           </form>
         </div>
 
         <p className="contact-footer-text">
-          Or email me directly at <a href="mailto:lily444taylor@gmail.com">lily444taylor@gmail.com</a>
+          Or email me directly at{' '}
+          <a href="mailto:lily444taylor@gmail.com">
+            lily444taylor@gmail.com
+          </a>
         </p>
       </section>
     </div>
@@ -70,4 +90,3 @@ function Contact() {
 }
 
 export default Contact;
-// q

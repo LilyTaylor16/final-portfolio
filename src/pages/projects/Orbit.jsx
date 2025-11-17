@@ -18,7 +18,11 @@ function OrbitStudios() {
       </Helmet>
 
       <Link to="/" className="orbit-logo-link">
-        <img src={Logo} alt="Logo" className="orbit-logo-img" />
+        <img
+          src={Logo}
+          alt="Lily Taylor portfolio logo"
+          className="orbit-logo-img"
+        />
       </Link>
 
       <header className="orbit-hero">
@@ -56,11 +60,11 @@ function OrbitStudios() {
       <section className="orbit-section">
         <h2>Branding & Assets</h2>
         <div className="orbit-brand-grid">
-          <img src="/Projects/Orbit/orbitlogo.png" alt="Orbit Logo" />
-          <img src="/Projects/Orbit/logo2.png" alt="Secondary Logo" />
-          <img src="/Projects/Orbit/colourpalette.png" alt="Colour Palette" />
-          <img src="/Projects/Orbit/insta.png" alt="Instagram Mockup 1" />
-          <img src="/Projects/Orbit/insta2.png" alt="Instagram Mockup 2" />
+          <img src="/Projects/Orbit/orbitlogo.png" alt="Orbit Studios primary logo" />
+          <img src="/Projects/Orbit/logo2.png" alt="Orbit Studios secondary logo" />
+          <img src="/Projects/Orbit/colourpalette.png" alt="Orbit Studios colour palette" />
+          <img src="/Projects/Orbit/insta.png" alt="Orbit Studios Instagram post mockup" />
+          <img src="/Projects/Orbit/insta2.png" alt="Orbit Studios Instagram carousel mockup" />
         </div>
       </section>
 
@@ -68,7 +72,11 @@ function OrbitStudios() {
         <h2>Wireframes</h2>
         <div className="orbit-wireframe-grid">
           {wireframes.map((src, index) => (
-            <img key={index} src={src} alt={`Wireframe ${index + 1}`} />
+            <img
+              key={index}
+              src={src}
+              alt={`Orbit Studios website wireframe ${index + 1}`}
+            />
           ))}
         </div>
       </section>

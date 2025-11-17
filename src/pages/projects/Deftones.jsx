@@ -16,7 +16,11 @@ function Deftones() {
       </Helmet>
 
       <Link to="/" className="deftones-logo-link">
-        <img src={Logo} alt="Logo" className="deftones-logo-img" />
+        <img
+          src={Logo}
+          alt="Lily Taylor portfolio logo"
+          className="deftones-logo-img"
+        />
       </Link>
     
       <header className="deftones-hero">
@@ -27,7 +31,7 @@ function Deftones() {
       <section className="deftones-gallery">
         <img
           src="/Projects/deftones/deftones-cover.png"
-          alt="Deftones Portrait Project"
+          alt="Deftones Around the Fur inspired portrait illustration"
           className="deftones-image"
         />
       </section>

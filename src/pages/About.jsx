@@ -1,4 +1,3 @@
-// src/pages/about.jsx
 import React, { useEffect, useState } from 'react';
 import './About.css';
 import { Link } from 'react-router-dom';
@@ -24,11 +23,9 @@ function About() {
   const [aotm, setAotm] = useState({ id: '', name: '', artist: '', monthKey: '' });
 
   useEffect(() => {
-    // Deterministic “random” key per calendar month, e.g. "2025-10"
     const monthKey = new Date().toISOString().slice(0, 7);
     const cacheKey = 'aotm-cache';
 
-    // 1) Use cache if it matches this month (prevents reshuffling within the month)
     const cached = (() => {
       try { return JSON.parse(localStorage.getItem(cacheKey) || '{}'); }
       catch { return {}; }
@@ -39,7 +36,6 @@ function About() {
       return;
     }
 
-    // 2) Otherwise fetch albums from playlist, pick stable “random”, and cache for the month
     async function loadAOTM() {
       try {
         const token = await getValidToken();
@@ -54,9 +50,8 @@ function About() {
           return;
         }
 
-        // Fetch ALL tracks (handles pagination)
         let next = `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=100&fields=items(track(album(id,name,images,artists(name)))),next`;
-        const albumsMap = new Map(); // dedupe albums by id
+        const albumsMap = new Map();
 
         while (next) {
           const r = await fetch(next, {
@@ -80,8 +75,6 @@ function About() {
           return;
         }
 
-        // Deterministic “random” pick that stays the same all month.
-        // Hash year+month to a stable index.
         const [y, m] = monthKey.split('-').map(Number);
         const seed = Number(`${y}${String(m).padStart(2, '0')}`);
         const idx = Math.abs((seed * 2654435761) % albums.length);
@@ -114,17 +107,21 @@ function About() {
         />
       </Helmet>
 
-      {/* Background art (unchanged) */}
-      <img src={spray1} alt="Spray 1" className="bg-graphic spray spray1" />
-      <img src={spray4} alt="Spray 4" className="bg-graphic spray spray4" />
-      <img src={spray6} alt="Spray 6" className="bg-graphic spray spray6" />
-      <img src={star1} alt="Star 1" className="bg-graphic star star1" />
-      <img src={star2} alt="Star 2" className="bg-graphic star star2" />
-      <img src={circles} alt="Circles" className="bg-graphic circles" />
+      {/* Background art (decorative) */}
+      <img src={spray1} alt="" aria-hidden="true" className="bg-graphic spray spray1" />
+      <img src={spray4} alt="" aria-hidden="true" className="bg-graphic spray spray4" />
+      <img src={spray6} alt="" aria-hidden="true" className="bg-graphic spray spray6" />
+      <img src={star1} alt="" aria-hidden="true" className="bg-graphic star star1" />
+      <img src={star2} alt="" aria-hidden="true" className="bg-graphic star star2" />
+      <img src={circles} alt="" aria-hidden="true" className="bg-graphic circles" />
 
       <div className="about-logo-container">
         <Link to="/">
-          <img src={Logo} alt="Lily Taylor Logo" className="about-logo" />
+          <img
+            src={Logo}
+            alt="Lily Taylor portfolio logo"
+            className="about-logo"
+          />
         </Link>
       </div>
 
@@ -132,14 +129,14 @@ function About() {
 
       <div className="about-grid">
         <div className="about-block">
-          <img src={img3} alt="Borneo" className="about-img" />
+          <img src={img3} alt="Childhood photo in Borneo" className="about-img" />
           <p className="about-text spiky-card">
             My journey began in the jungles of Miri, Borneo, where I was born premature as an elective caesarean. My first breaths, steps, smells, and touches were all experienced in the hot, tropical beaches and lush jungles of Borneo. I truly believe those early moments left a mark on my subconscious - ever since, I’ve been drawn to warmth, to the beach, to anything that feels a little wild and alive.
           </p>
         </div>
 
         <div className="about-block reverse">
-          <img src={img2} alt="Scotland" className="about-img" />
+          <img src={img2} alt="Early childhood in Scotland and England" className="about-img" />
           <p className="about-text spiky-card">
             When I was 2, my family moved to Kent, England, back to the house my parents had owned for years. After that, we headed to a small town in the Scottish Highlands—Fort Augustus—where some of my earliest memories were formed: playing on farms, eating my nana’s home-cooked meals, and running around barefoot. Then, when I was 4, we completely switched it up and moved to Ladysmith, South Africa—a small country town between Durban and Johannesburg.
           </p>
@@ -155,28 +152,28 @@ function About() {
         </div>
 
         <div className="about-block reverse">
-          <img src={img1} alt="North Vancouver" className="about-img" />
+          <img src={img1} alt="Living in North Vancouver" className="about-img" />
           <p className="about-text spiky-card">
             Now I live in North Vancouver, and it feels like home. Mountains, ocean, creativity, culture—I feel lucky every day to be here.
           </p>
         </div>
 
         <div className="about-block">
-          <img src={img4} alt="Soccer" className="about-img" />
+          <img src={img4} alt="Playing soccer growing up" className="about-img" />
           <p className="about-text spiky-card">
             Throughout my school years, I bounced between interests constantly. I’ve always been curious—restless in the best way. I wanted to try everything. Soccer became a huge part of my life when I was 7, and I’ve been on the pitch ever since. It taught me how to grow, how to fail and try again, how to show up for people, and how much I love the feeling of improving at something I care about.
           </p>
         </div>
 
         <div className="about-block reverse">
-          <img src={img5} alt="Family background" className="about-img" />
+          <img src={img5} alt="Family background in design and engineering" className="about-img" />
           <p className="about-text spiky-card">
             Creativity has always been part of me. My dad is a geological engineer. My mum’s a textile designer. I always say I’m the perfect mix of both: analytical and creative. I love to break things down, solve problems, and approach challenges from a logical standpoint—but I also need everything around me to look and feel good. I might not be a fine artist like my mum, but I’ve always had a strong eye for design. I notice details, I arrange things with intention, and I make decisions based on feeling and function. Whether it’s a website layout, a motion graphic, or even my own journal—everything I make is built with purpose.
           </p>
         </div>
 
         <div className="about-block">
-          <img src={img6} alt="New Media" className="about-img" />
+          <img src={img6} alt="Studying New Media and Web Development" className="about-img" />
           <p className="about-text spiky-card">
             That’s what drew me to New Media and Web Development—it brings together everything I’m passionate about. I get to problem-solve, design with intention, and build experiences that are both functional and meaningful. It’s a field where creativity and logic work hand-in-hand, and that balance just makes sense to me. I love the process of taking an idea and turning it into something people can interact with, something that looks good and works well.
           </p>
@@ -218,8 +215,6 @@ function About() {
               </div>
 
               <div className="music-panel">
-                {/* <h4 className="music-subtitle">Album of the Month</h4> */}
-                {/* Replaces the hard-coded iframe with the dynamic monthly pick */}
                 <AlbumOfTheMonth
                   albumId={aotm.id}
                   blurb={

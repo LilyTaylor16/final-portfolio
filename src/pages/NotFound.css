@@ -1,0 +1,121 @@
+/* ============== BASE WRAPPER ============== */
+
+.nf-wrapper {
+    width: 100%;
+    height: 100vh;
+    background: #050007;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    font-family: "Inter", sans-serif;
+    text-align: center;
+  }
+  
+  /* subtle cyber grid */
+  .nf-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 26px 26px;
+    pointer-events: none;
+    opacity: 0.35;
+  }
+  
+  /* ============== CONTENT ============== */
+  
+  .nf-content {
+    position: relative;
+    z-index: 10;
+    max-width: 500px;
+    padding: 1rem;
+  }
+  
+  /* MAIN 404 TEXT */
+  .nf-404 {
+    font-size: clamp(5rem, 18vw, 10rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    color: #ff2daf;
+    text-shadow:
+      0 0 8px rgba(255, 45, 175, 0.8),
+      0 0 18px rgba(255, 45, 175, 0.5),
+      0 0 28px rgba(255, 45, 175, 0.4);
+    position: relative;
+  }
+  
+  /* CYBER GLITCH EFFECT */
+  .nf-404::before,
+  .nf-404::after {
+    content: attr(data-glitch);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    color: #ff8acf;
+    opacity: 0.55;
+    clip-path: inset(0 0 0 0);
+    animation: glitch 1.6s infinite linear alternate-reverse;
+  }
+  
+  /* one side */
+  .nf-404::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff8acf;
+  }
+  
+  /* other side */
+  .nf-404::after {
+    left: -2px;
+    text-shadow: 2px 0 #8a00ff;
+    animation-delay: 0.25s;
+  }
+  
+  @keyframes glitch {
+    0% { clip-path: inset(0 0 20% 0); }
+    20% { clip-path: inset(10% 0 20% 0); }
+    40% { clip-path: inset(40% 0 5% 0); }
+    60% { clip-path: inset(25% 0 30% 0); }
+    80% { clip-path: inset(15% 0 40% 0); }
+    100% { clip-path: inset(0 0 10% 0); }
+  }
+  
+  /* SUBTEXT */
+  .nf-subtitle {
+    margin-top: -0.6rem;
+    color: #fff;
+    opacity: 0.8;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  
+  /* BUTTON */
+  .nf-home-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.7rem 2.2rem;
+    border: 1px solid #ff2daf;
+    color: #ff2daf;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border-radius: 2px;
+    transition: 0.15s ease-in-out;
+    box-shadow: 0 0 12px rgba(255, 45, 175, 0.25);
+  }
+  
+  .nf-home-btn:hover {
+    background: #ff2daf;
+    color: #0a000f;
+    box-shadow: 
+      0 0 10px rgba(255, 45, 175, 0.85),
+      0 0 30px rgba(255, 45, 175, 0.7);
+  }
+  

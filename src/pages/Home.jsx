@@ -39,29 +39,29 @@ function Home() {
 
   // RIGHT-SIDE ROTATORS
   const projectSlides = [
-    { src: "/Projects/punkpucker/heartbreaker-can.png", alt: "Punk Pucker — Heartbreaker" },
-    { src: "/Projects/punkpucker/hyper-zest-can.png",  alt: "Punk Pucker — Hyper Zest" },
-    { src: "/Projects/Orbit/w7.png",                   alt: "Orbit Studios — Wireframe" },
-    { src: "/Projects/deftones/deftones-cover.png",    alt: "Deftones Portrait" },
-    { src: "/zine/lilyzine5.jpg",                      alt: "Zine Spread" },
+    { src: "/Projects/punkpucker/heartbreaker-can.png", alt: "Punk & Pucker Heartbreaker can" },
+    { src: "/Projects/punkpucker/hyper-zest-can.png",  alt: "Punk & Pucker Hyper Zest can" },
+    { src: "/Projects/Orbit/w7.png",                   alt: "Orbit Studios website wireframe" },
+    { src: "/Projects/deftones/deftones-cover.png",    alt: "Deftones portrait illustration" },
+    { src: "/zine/lilyzine5.jpg",                      alt: "Lyrics of Life zine spread" },
   ];
 
   // About images: imported above from src/assets/about
   const aboutSlides = [
-    { src: about6, alt: "About photo 6" },
-    { src: about5, alt: "About photo 5" },
-    { src: about4, alt: "About photo 4" },
-    { src: about3, alt: "About photo 3" },
-    { src: about2, alt: "About photo 2" },
-    { src: about1, alt: "About photo 1" },
+    { src: about6, alt: "Personal photo collage 6" },
+    { src: about5, alt: "Personal photo collage 5" },
+    { src: about4, alt: "Personal photo collage 4" },
+    { src: about3, alt: "Personal photo collage 3" },
+    { src: about2, alt: "Personal photo collage 2" },
+    { src: about1, alt: "Personal photo collage 1" },
   ];
 
-  // Contact: reuse existing graphics you already import (no new assets)
+  // Contact: reused graphics (these are more decorative vibes)
   const contactSlides = [
-    { src: star1,   alt: "Graphic star" },
-    { src: squares, alt: "Graphic squares" },
-    { src: circles, alt: "Graphic circles" },
-    { src: spray4,  alt: "Graphic spray" },
+    { src: star1,   alt: "Graphic star element" },
+    { src: squares, alt: "Geometric squares graphic" },
+    { src: circles, alt: "Circular background graphic" },
+    { src: spray4,  alt: "Spray paint texture graphic" },
   ];
 
   return (
@@ -74,24 +74,28 @@ function Home() {
         />
       </Helmet>
 
-      {/* Background Graphics (unchanged) */}
-      <img src={circles} alt="Circles" className="bg-graphic circles" />
-      <img src={circles} alt="Circles" className="bg-graphic circles dup1" />
-      <img src={circles} alt="Circles" className="bg-graphic circles dup2" />
+      {/* Background Graphics (decorative only) */}
+      <img src={circles} alt="" aria-hidden="true" className="bg-graphic circles" />
+      <img src={circles} alt="" aria-hidden="true" className="bg-graphic circles dup1" />
+      <img src={circles} alt="" aria-hidden="true" className="bg-graphic circles dup2" />
 
-      <img src={squares} alt="Squares" className="bg-graphic squares" />
-      <img src={squares} alt="Squares" className="bg-graphic squares dup1" />
+      <img src={squares} alt="" aria-hidden="true" className="bg-graphic squares" />
+      <img src={squares} alt="" aria-hidden="true" className="bg-graphic squares dup1" />
 
-      <img src={star1} alt="Star" className="bg-graphic star1" />
-      <img src={star1} alt="Star" className="bg-graphic star1 dup1" />
+      <img src={star1} alt="" aria-hidden="true" className="bg-graphic star1" />
+      <img src={star1} alt="" aria-hidden="true" className="bg-graphic star1 dup1" />
 
-      <img src={spray4} alt="Spray" className="spray-bg" />
+      <img src={spray4} alt="" aria-hidden="true" className="spray-bg" />
 
-      {/* Hero (unchanged) */}
+      {/* Hero */}
       <section className="home container">
         <div className="hero">
           <div className="home-logo-container">
-            <img src={Logo} alt="Lily Taylor Logo" className="home-logo" />
+            <img
+              src={Logo}
+              alt="Lily Taylor portfolio logo"
+              className="home-logo"
+            />
           </div>
 
           <h1 className="hero-title">Lily Taylor</h1>
@@ -100,15 +104,14 @@ function Home() {
         </div>
       </section>
 
-      {/* FLOW WRAPPER: vertical leading line + nodes tie sections together */}
+      {/* FLOW WRAPPER */}
       <div className="flow">
-        {/* Split: Work (formerly Projects) */}
+        {/* Split: Work */}
         <section className="split-full minimal-split">
           <div className="flow-node" aria-hidden="true" />
           <div className="split-col split-left">
-            {/* Replace text title with SVG image */}
             <h2 className="split-title rule-to-spine" aria-label="Work">
-              <img src={WorkHeader} alt="Work" className="split-title-img" />
+              <img src={WorkHeader} alt="Work section header" className="split-title-img" />
             </h2>
             <p className="split-sub">Branding, UI, motion, interactive</p>
             <div className="split-links">
@@ -119,7 +122,6 @@ function Home() {
             </div>
           </div>
           <div className="split-col split-right">
-            {/* Faster rotation */}
             <BoxRotator slides={projectSlides} interval={1800} />
           </div>
         </section>
@@ -128,9 +130,8 @@ function Home() {
         <section className="split-full minimal-split">
           <div className="flow-node" aria-hidden="true" />
           <div className="split-col split-left">
-            {/* Replace text title with SVG image */}
             <h2 className="split-title rule-to-spine" aria-label="About">
-              <img src={AboutHeader} alt="About" className="split-title-img" />
+              <img src={AboutHeader} alt="About section header" className="split-title-img" />
             </h2>
             <p className="split-sub">A little bit about why I am the way I am. </p>
             <div className="split-links">
@@ -138,7 +139,6 @@ function Home() {
             </div>
           </div>
           <div className="split-col split-right">
-            {/* Faster rotation */}
             <BoxRotator slides={aboutSlides} interval={1600} />
           </div>
         </section>
@@ -147,9 +147,8 @@ function Home() {
         <section className="split-full minimal-split">
           <div className="flow-node" aria-hidden="true" />
           <div className="split-col split-left">
-            {/* Replace text title with SVG image */}
             <h2 className="split-title rule-to-spine" aria-label="Contact">
-              <img src={ContactHeader} alt="Contact" className="split-title-img" />
+              <img src={ContactHeader} alt="Contact section header" className="split-title-img" />
             </h2>
             <p className="split-sub">Wanna chat?</p>
             <div className="split-links">
@@ -157,7 +156,6 @@ function Home() {
             </div>
           </div>
           <div className="split-col split-right">
-            {/* Slightly faster */}
             <BoxRotator slides={contactSlides} interval={1500} />
           </div>
         </section>

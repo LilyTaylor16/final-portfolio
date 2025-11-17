@@ -8,18 +8,18 @@ import "./BoxRotator.css";
  * - Simple crossfade, pauses on hover
  */
 export default function BoxRotator({ slides = [], interval = 3000 }) {
-  const [index, setIndex] = useState(0);
+  const [x, setx] = useState(0);
   const timerRef = useRef(null);
   const hoverRef = useRef(false);
 
-  const next = () => setIndex((i) => (i + 1) % slides.length);
+  const next = () => setx((i) => (i + 1) % slides.length);
 
   useEffect(() => {
     if (!slides.length) return;
     if (hoverRef.current) return;
     timerRef.current = setTimeout(next, interval);
     return () => clearTimeout(timerRef.current);
-  }, [index, slides, interval]);
+  }, [x, slides, interval]);
 
   const onEnter = () => { hoverRef.current = true; clearTimeout(timerRef.current); };
   const onLeave = () => { hoverRef.current = false; timerRef.current = setTimeout(next, interval); };
@@ -29,7 +29,7 @@ export default function BoxRotator({ slides = [], interval = 3000 }) {
       {slides.map((s, i) => (
         <img
           key={i}
-          className={`br-media ${i === index ? "is-active" : ""}`}
+          className={`br-media ${i === x ? "is-active" : ""}`}
           src={s.src}
           alt={s.alt || ""}
           loading={i === 0 ? "eager" : "lazy"}

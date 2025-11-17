@@ -1,66 +1,134 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/Work.css";
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
 import { Helmet } from "react-helmet";
 
 const projects = [
-  { title: "Punk Pucker", path: "/projects/punkpucker", img: "/Projects/project1.png" },
-  { title: "Zine", path: "/projects/zine", img: "/public/zine/lilyzine5.jpg" },
-  { title: "Deftones", path: "/projects/deftones", img: "/Projects/deftones/deftones-cover.png" },
-  { title: "Orbit Studios", path: "/projects/orbitstudios", img: "/Projects/Orbit/orbitlogo.png" },
-  { title: "Project 5", path: "/projects/project5", img: "/assets/Projects/project5.png" },
-  { title: "Project 6", path: "/projects/project6", img: "/assets/Projects/project6.png" },
-  { title: "Project 7", path: "/projects/project7", img: "/assets/Projects/project7.png" },
-  { title: "Project 8", path: "/projects/project8", img: "/assets/Projects/project8.png" },
+  {
+    title: "Punk & Pucker",
+    path: "/projects/punkpucker",
+    img: "public/Projects/punkpucker/heartbreaker-can.png",
+    category: "Brand Identity · Packaging · Web",
+    tagline: "Sour beer brand with bold visual identity, packaging system, and a digital experience."
+  },
+  {
+    title: "Zine",
+    path: "/projects/zine",
+    img: "/zine/lilyzine5.jpg",
+    category: "Editorial · Experimental",
+    tagline: "A 14-page digital zine combining childhood photos, lyrics, and collage-based layout design."
+  },
+  {
+    title: "Deftones Portrait",
+    path: "/projects/deftones",
+    img: "/Projects/deftones/deftones-cover.png",
+    category: "Illustration · Digital Art",
+    tagline: "Vector portrait inspired by Deftones’ 'Around the Fur', fully recreated in Illustrator."
+  },
+  {
+    title: "Orbit Studios",
+    path: "/projects/orbitstudios",
+    img: "/Projects/Orbit/orbitlogo.png",
+    category: "Branding · UX/UI",
+    tagline: "Brand identity and web experience for a fictional recording studio for independent artists."
+  },
+  {
+    title: "Project 5",
+    path: "/projects/project5",
+    img: "/Projects/project5.png",
+    category: "Case Study Coming Soon",
+    tagline: "New work in progress. This slot will be replaced with a full case study."
+  },
+  {
+    title: "Project 6",
+    path: "/projects/project6",
+    img: "/Projects/project6.png",
+    category: "Case Study Coming Soon",
+    tagline: "New work in progress. This slot will be replaced with a full case study."
+  },
+  {
+    title: "Project 7",
+    path: "/projects/project7",
+    img: "/Projects/project7.png",
+    category: "Case Study Coming Soon",
+    tagline: "New work in progress. This slot will be replaced with a full case study."
+  },
+  {
+    title: "Project 8",
+    path: "/projects/project8",
+    img: "/Projects/project8.png",
+    category: "Case Study Coming Soon",
+    tagline: "New work in progress. This slot will be replaced with a full case study."
+  }
 ];
 
 function Work() {
-  const angle = 360 / projects.length;
-  const [rotation, setRotation] = useState(0);
-  const handleNext = () => setRotation((p) => p - angle);
-  const handlePrev = () => setRotation((p) => p + angle);
-
   return (
     <div className="work-page">
       <Helmet>
         <title>My Work | Lily Taylor Portfolio</title>
         <meta
           name="description"
-          content="Explore Lily Taylor’s creative portfolio featuring branding, interactive media, illustration, and UI/UX design projects. View featured works from her time at BCIT's New Media Design and Web Development program."
+          content="Selected projects by Lily Taylor, including brand identity, web design, illustration, and interactive media created during BCIT’s New Media Design & Web Development program and beyond."
         />
       </Helmet>
 
-      <Link to="/" className="work-logo-link">
-        <img src={Logo} alt="Logo" className="work-logo-img" />
-      </Link>
+      {/* Simple top nav with logo */}
+      <header className="work-nav">
+        <Link to="/" className="work-logo-link">
+          <img
+            src={Logo}
+            alt="Lily Taylor portfolio logo"
+            className="work-logo-img"
+          />
+        </Link>
+        <nav className="work-nav-links">
+          <Link to="/" className="work-nav-link">Home</Link>
+          <span className="work-nav-divider">/</span>
+          <span className="work-nav-current">Work</span>
+        </nav>
+      </header>
 
-      <h1 className="carousel-title underline--spike">My Work</h1>
+      <main className="work-wrapper">
+        <section className="work-header">
+          <p className="section-label">Selected Projects</p>
+          <h1 className="work-title underline--spike">My Work</h1>
+          <p className="work-subtitle">
+            A curated selection of branding, web, illustration, and motion pieces.
+            Each project includes process, context, and the role I played in bringing it to life.
+          </p>
+        </section>
 
-      <div className="carousel-wrapper">
-        <div className="carousel">
-          <div className="carousel-ring" style={{ transform: `rotateY(${rotation}deg)` }}>
-            {projects.map((project, index) => (
-              <div
-                className="carousel-slide"
-                key={index}
-                style={{ transform: `rotateY(${index * angle}deg) translateZ(400px)` }}
-              >
-                <Link to={project.path}>
-                  <img src={project.img} alt={project.title} />
-                  <h3>{project.title}</h3>
-                  <p>View Project →</p>
-                </Link>
+        <section className="work-grid" aria-label="Project gallery">
+          {projects.map((project) => (
+            <Link
+              key={project.path}
+              to={project.path}
+              className="project-card"
+            >
+              <div className="project-img-wrapper">
+                <img
+                  src={project.img}
+                  alt={`${project.title} project thumbnail`}
+                  className="project-img"
+                />
               </div>
-            ))}
-          </div>
-        </div>
 
-        <div className="carousel-controls">
-          <button onClick={handlePrev} className="carousel-btn btn--spike">←</button>
-          <button onClick={handleNext} className="carousel-btn btn--spike">→</button>
-        </div>
-      </div>
+              <div className="project-content">
+                {project.category && (
+                  <span className="project-category-pill">{project.category}</span>
+                )}
+                <h2 className="project-title">{project.title}</h2>
+                {project.tagline && (
+                  <p className="project-tagline">{project.tagline}</p>
+                )}
+                <span className="project-link">View project</span>
+              </div>
+            </Link>
+          ))}
+        </section>
+      </main>
     </div>
   );
 }

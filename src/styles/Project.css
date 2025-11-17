@@ -1,65 +1,239 @@
-.project-wrapper {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 4rem 1.5rem;
+/* --- Layout wrapper --- */
+
+/* your Punk Pucker root div has both classes: project-page project-wrapper */
+.project-page.project-wrapper {
+  max-width: 1100px;
+  margin: 7rem auto 0;   /* pushes everything down below nav */
+  padding: 3.5rem 1.5rem 5rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+  background: transparent;   /* no white box */
+  backdrop-filter: none;
 }
 
+/* --- Typography --- */
+
 .project-title {
-  font-size: 3rem;
+  font-size: 2.6rem;
   font-weight: 800;
-  text-align: center;
+  letter-spacing: 0.04em;
+  text-align: left;
   color: var(--black);
+  text-transform: uppercase;
 }
 
 .project-description {
-  font-size: 1.15rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--black);
-  background: rgba(255, 255, 255, 0.9);
-  padding: 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  max-width: 40rem;
+  margin-bottom: 0.8rem;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-.project-images {
+.project-section {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.project-section h2 {
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* --- Hero section --- */
+
+.project-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 2.25rem;
+  align-items: center;
+}
+
+/* row of cans in hero */
+.cans-hero {
+  display: flex;
+  gap: 1.25rem;
   justify-content: center;
+  align-items: flex-end;
 }
 
-.project-images img {
-  max-width: 100%;
+.cans-hero img {
+  max-width: 160px;
   height: auto;
-  border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-.project-wrapper section:nth-child(odd) {
-  background-color: #fdf8ff;
-  padding: 3rem;
-  border-radius: 1rem;
+  display: block;
 }
 
-.project-wrapper section:nth-child(even) {
-  background-color: #fffdf8;
-  padding: 3rem;
-  border-radius: 1rem;
-}
-.project-images img {
-  transition: transform 0.3s ease;
+.project-hero-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-.project-images img:hover {
-  transform: scale(1.05) rotate(-1deg);
+.project-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
-.project-wrapper section {
+
+/* --- Split layout sections --- */
+
+.project-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.project-split.reverse {
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+}
+
+.project-media img,
+.project-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* smaller image specifically for “Pushing the Logo Too Far” */
+.logo-experiment-section .project-media img {
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+/* smaller image for the final chosen logo section */
+.logo-final-section .project-media img {
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+.project-text {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--black);
+}
+
+/* --- Image galleries --- */
+
+.project-images,
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-images img,
+.project-gallery img {
+  width: 100%;
+  max-width: 260px;
+  justify-self: center;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.project-images img:hover,
+.project-gallery img:hover {
+  transform: translateY(-4px);
+  opacity: 0.95;
+}
+
+/* Video + caption */
+
+.project-video {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.project-caption {
+  font-size: 0.85rem;
+  color: var(--black-muted);
+  text-align: center;
+}
+
+/* Links to PDFs (if you still use any inline links) */
+
+.project-link-inline {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Reflection section slightly narrower */
+
+.project-reflection {
+  max-width: 50rem;
+}
+
+/* --- Riot vs Heartbreaker row --- */
+
+.evolution-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Riot can: smaller, de-emphasised */
+.evolution-row .small-exploration {
+  max-width: 130px;
+  opacity: 0.7;
+}
+
+/* Heartbreaker can: bigger focus */
+.evolution-row img:last-child {
+  max-width: 230px;
+}
+
+/* --- Style guide PDF frame --- */
+
+.styleguide-section {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.styleguide-wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.styleguide-frame {
+  width: 100%;
+  max-width: 1100px;   /* wide */
+  height: 420px;       /* shorter / more horizontal */
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* --- Fade-in animation --- */
+
+.project-page.project-wrapper section {
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInSection 0.8s ease forwards;
-  animation-delay: calc(var(--section-index) * 0.2s);
+  transform: translateY(20px);
+  animation: fadeInSection 0.55s ease forwards;
+  animation-delay: calc(var(--section-index) * 0.1s);
 }
 
 @keyframes fadeInSection {
@@ -69,19 +243,21 @@
   }
 }
 
+/* --- Floating background logos --- */
+
 @keyframes float {
-  0% { transform: translateY(0) rotate(-10deg); }
-  50% { transform: translateY(-12px) rotate(-8deg); }
+  0%   { transform: translateY(0) rotate(-10deg); }
+  50%  { transform: translateY(-10px) rotate(-8deg); }
   100% { transform: translateY(0) rotate(-10deg); }
 }
 
 .punk-logo {
-  position:fixed;
+  position: fixed;
   z-index: 0;
-  opacity: 30%;
-  width: 240px;
+  opacity: 0.08;      /* faint so content stands out */
+  width: 220px;
   pointer-events: none;
-  filter: blur(0.8px);
+  filter: blur(1px);
   animation: float 12s ease-in-out infinite;
 }
 
@@ -91,18 +267,88 @@
   animation-delay: 0s;
 }
 .punk-logo2 {
-  top: 30%;
-  right: -100px;
+  top: 22%;
+  right: -90px;
   animation-delay: 2s;
 }
 .punk-logo3 {
-  top: 60%;
-  left: 40%;
+  top: 55%;
+  left: 45%;
   transform: translateX(-50%) rotate(-5deg);
   animation-delay: 4s;
 }
 .punk-logo4 {
-  bottom: -50px;
-  right: 15%;
+  bottom: -40px;
+  right: 12%;
   animation-delay: 1s;
+}
+
+/* --- Back to Work floating button --- */
+
+.back-to-work-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  padding: 0.65rem 1.1rem;
+  background: var(--pink-primary);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  z-index: 2000;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.back-to-work-btn:hover {
+  background: var(--pink-hot);
+  transform: translateY(-3px);
+}
+
+/* --- Responsive tweaks --- */
+
+@media (max-width: 900px) {
+  .project-hero,
+  .project-split,
+  .project-split.reverse {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-hero {
+    gap: 2rem;
+  }
+
+  .project-title {
+    font-size: 2.2rem;
+    text-align: left;
+  }
+
+  .cans-hero {
+    justify-content: flex-start;
+  }
+
+  .project-page.project-wrapper {
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-page.project-wrapper {
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  .project-images,
+  .project-gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cans-hero {
+    justify-content: center;
+  }
+
+  .back-to-work-btn {
+    bottom: 20px;
+    right: 20px;
+  }
 }

@@ -43,7 +43,11 @@ export default function Zine() {
       <div className="zine-gallery">
         <div className={`zine-spread ${zinePages[currentIndex].length === 1 ? "zine-single" : ""}`}>
           {zinePages[currentIndex].map((src, i) => (
-            <img src={src} alt={`Zine page ${currentIndex}-${i}`} key={i} />
+            <img
+              key={i}
+              src={src}
+              alt={`Lyrics of Life zine page ${currentIndex + 1}, panel ${i + 1}`}
+            />
           ))}
         </div>
 
