@@ -1,10 +1,11 @@
+// src/App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./styles/global.css";
 import "./App.css";
 import "./styles/variables.css";
 
-// Helmet
+// Helmet for favicon + global meta
 import { Helmet } from "react-helmet";
 
 // Layout
@@ -28,42 +29,43 @@ import Project6 from "./pages/projects/Project6";
 import Project7 from "./pages/projects/Project7";
 import Project8 from "./pages/projects/Project8";
 
-// Spotify OAuth callback
-import SpotifyCallback from "./pages/SpotifyCallback";
-
 function App() {
   return (
     <Router>
-      {/* GLOBAL META + OG TAGS */}
+      {/* Global helmet for favicon + social preview */}
       <Helmet>
-        {/* Favicon */}
         <link rel="icon" type="image/png" href="/favicon.png" />
 
-        {/* Primary Meta */}
-        <title>Lily Taylor | Designer & Creative Technologist</title>
+        {/* Open Graph / social preview */}
         <meta
-          name="description"
-          content="Portfolio of Lily Taylor — a creative designer building bold, expressive, alternative digital experiences through UX/UI, branding, motion, and experimental visuals."
+          property="og:title"
+          content="Lily Taylor | Designer & Creative Developer"
         />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Lily Taylor | Portfolio" />
         <meta
           property="og:description"
-          content="Explore experimental design, branding, motion, UX/UI, and creative projects by Lily Taylor."
+          content="Portfolio of Lily Taylor — branding, web, motion, and interactive work created in BCIT’s New Media Design & Web Development program and beyond."
+        />
+        <meta
+          property="og:image"
+          content="https://lily-taylor.ca/pink-star.png"
         />
         <meta property="og:url" content="https://lily-taylor.ca" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://lily-taylor.ca/favicon.png" />
 
-        {/* Twitter Card */}
+        {/* Twitter card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Lily Taylor | Portfolio" />
+        <meta
+          name="twitter:title"
+          content="Lily Taylor | Designer & Creative Developer"
+        />
         <meta
           name="twitter:description"
-          content="Expressive, bold, alternative visual design — view Lily Taylor's work."
+          content="Portfolio of Lily Taylor — branding, web, motion, and interactive work."
         />
-        <meta name="twitter:image" content="https://lily-taylor.ca/favicon.png" />
+        <meta
+          name="twitter:image"
+          content="https://lily-taylor.ca/pink-star.png"
+        />
       </Helmet>
 
       <div className="app-wrapper">
@@ -86,10 +88,7 @@ function App() {
             <Route path="/projects/project7" element={<Project7 />} />
             <Route path="/projects/project8" element={<Project8 />} />
 
-            {/* Spotify Redirect */}
-            <Route path="/callback" element={<SpotifyCallback />} />
-
-            {/* 404 */}
+            {/* 404 CATCH-ALL – MUST BE LAST */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
