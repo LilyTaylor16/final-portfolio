@@ -13,7 +13,9 @@ import img6 from "../assets/about/6.jpg";
 import southAfricaVideo from "../assets/about/SouthAfrica.mp4";
 import Logo from "../assets/images/logo.svg";
 
-import SpotifyDailyThree from "../components/SpotifyDailyThree";
+// ⬇️ new import
+import SongOfTheDay from "../components/SongOfTheDay";
+
 import AlbumOfTheMonth from "../components/AlbumOfTheMonth";
 
 import {
@@ -37,12 +39,42 @@ function About() {
       </Helmet>
 
       {/* Background art (decorative) */}
-      <img src={spray1} alt="" aria-hidden="true" className="bg-graphic spray spray1" />
-      <img src={spray4} alt="" aria-hidden="true" className="bg-graphic spray spray4" />
-      <img src={spray6} alt="" aria-hidden="true" className="bg-graphic spray spray6" />
-      <img src={star1} alt="" aria-hidden="true" className="bg-graphic star star1" />
-      <img src={star2} alt="" aria-hidden="true" className="bg-graphic star star2" />
-      <img src={circles} alt="" aria-hidden="true" className="bg-graphic circles" />
+      <img
+        src={spray1}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic spray spray1"
+      />
+      <img
+        src={spray4}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic spray spray4"
+      />
+      <img
+        src={spray6}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic spray spray6"
+      />
+      <img
+        src={star1}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic star star1"
+      />
+      <img
+        src={star2}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic star star2"
+      />
+      <img
+        src={circles}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic circles"
+      />
 
       <div className="about-logo-container">
         <Link to="/">
@@ -57,11 +89,12 @@ function About() {
           <img src={img3} alt="Borneo" className="about-img" />
           <p className="about-text spiky-card">
             My journey began in the jungles of Miri, Borneo, where I was born
-            premature as an elective caesarean. My first breaths, steps, smells,
-            and touches were all experienced in the hot, tropical beaches and
-            lush jungles of Borneo. I truly believe those early moments left a
-            mark on my subconscious - ever since, I’ve been drawn to warmth, to
-            the beach, to anything that feels a little wild and alive.
+            premature as an elective caesarean. My first breaths, steps,
+            smells, and touches were all experienced in the hot, tropical
+            beaches and lush jungles of Borneo. I truly believe those early
+            moments left a mark on my subconscious - ever since, I’ve been drawn
+            to warmth, to the beach, to anything that feels a little wild and
+            alive.
           </p>
         </div>
 
@@ -153,13 +186,14 @@ function About() {
         <section className="about-music-section">
           <h2 className="about-music-title">Music</h2>
           <p className="about-music-desc">
-            Music is a huge part of my life. Here are a few songs and an album I’ve had on repeat.
+            Music is a huge part of my life. Here is a daily song feature and an album
+            I’ve had on repeat.
           </p>
 
           <div className="music-grid-2col">
-            {/* LEFT: Daily 3 (static embeds now) */}
+            {/* LEFT: Song of the Day */}
             <div className="music-left">
-              <SpotifyDailyThree />
+              <SongOfTheDay />
             </div>
 
             {/* RIGHT: playlist + album */}

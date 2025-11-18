@@ -35,7 +35,9 @@
   animation: fadeInUp 1s ease;
 }
 
-.about-block.reverse { flex-direction: row-reverse; }
+.about-block.reverse {
+  flex-direction: row-reverse;
+}
 
 .about-img {
   width: 45%;
@@ -43,7 +45,10 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   transition: transform 0.4s ease;
 }
-.about-img:hover { transform: scale(1.02); }
+
+.about-img:hover {
+  transform: scale(1.02);
+}
 
 .about-text {
   width: 55%;
@@ -57,35 +62,101 @@
 }
 
 /* Background graphics */
-.bg-graphic { position: absolute; z-index: 0; pointer-events: none; opacity: 100; filter: blur(1px); }
-.bg-graphic:nth-of-type(6) { top: 1%; left: -75%; width: 1500px; }
-.bg-graphic:nth-of-type(2) { top: 20%; right: -15%; width: 300px; }
-.bg-graphic:nth-of-type(3) { top: 35%; left: 25%; width: 1000px; opacity: 20; }
-.bg-graphic:nth-of-type(4) { top: 50%; right: -50%; width: 800px; }
-.bg-graphic:nth-of-type(5) { top: 70%; left: -50%; width: 300px; }
-.bg-graphic:nth-of-type(1) { top: 85%; right: 15%; width: 500px; }
+.bg-graphic {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 100;
+  filter: blur(1px);
+}
+.bg-graphic:nth-of-type(6) {
+  top: 1%;
+  left: -75%;
+  width: 1500px;
+}
+.bg-graphic:nth-of-type(2) {
+  top: 20%;
+  right: -15%;
+  width: 300px;
+}
+.bg-graphic:nth-of-type(3) {
+  top: 35%;
+  left: 25%;
+  width: 1000px;
+  opacity: 20;
+}
+.bg-graphic:nth-of-type(4) {
+  top: 50%;
+  right: -50%;
+  width: 800px;
+}
+.bg-graphic:nth-of-type(5) {
+  top: 70%;
+  left: -50%;
+  width: 300px;
+}
+.bg-graphic:nth-of-type(1) {
+  top: 85%;
+  right: 15%;
+  width: 500px;
+}
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-  .about-block, .about-block.reverse { flex-direction: column; }
-  .about-img, .about-text { width: 100%; }
-  .about-title { font-size: 2.2rem; }
+  .about-block,
+  .about-block.reverse {
+    flex-direction: column;
+  }
+  .about-img,
+  .about-text {
+    width: 100%;
+  }
+  .about-title {
+    font-size: 2.2rem;
+  }
 }
 
-.about-block.reverse:last-of-type { margin-top: 2rem; }
-.about-logo-container { display: flex; justify-content: center; margin-bottom: 2rem; }
-.about-logo { width: 120px; height: auto; animation: pulseLogo 3s infinite ease-in-out; }
-@keyframes pulseLogo { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.85; } }
+.about-block.reverse:last-of-type {
+  margin-top: 2rem;
+}
+
+.about-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.about-logo {
+  width: 120px;
+  height: auto;
+  animation: pulseLogo 3s infinite ease-in-out;
+}
+
+@keyframes pulseLogo {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.85;
+  }
+}
 
 /* ===== Spiky utilities ===== */
-.spiky-card{
+.spiky-card {
   --e: 14px;
   position: relative;
   -webkit-mask:
-    radial-gradient(circle at 0 0, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) top left,
-    radial-gradient(circle at 100% 0, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) top right,
-    radial-gradient(circle at 100% 100%, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) bottom right,
-    radial-gradient(circle at 0 100%, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px)) bottom left;
+    radial-gradient(circle at 0 0, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px))
+      top left,
+    radial-gradient(circle at 100% 0, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px))
+      top right,
+    radial-gradient(circle at 100% 100%, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px))
+      bottom right,
+    radial-gradient(circle at 0 100%, transparent calc(var(--e) - 0.5px), #000 calc(var(--e) + 0.5px))
+      bottom left;
   -webkit-mask-size: 51% 51%;
   -webkit-mask-repeat: no-repeat;
 }
@@ -94,13 +165,23 @@
 .underline--spike {
   position: relative;
   display: inline-block;
-  padding-bottom: .4rem;
+  padding-bottom: 0.4rem;
 }
+
 .underline--spike::after {
-  content:"";
-  position:absolute; left:0; right:0; bottom:0; height:6px;
-  background: conic-gradient(from 45deg, var(--pink-primary) 0 25%, transparent 0 50%) left/16px 100% repeat-x;
-  opacity:.9;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6px;
+  background: conic-gradient(
+      from 45deg,
+      var(--pink-primary) 0 25%,
+      transparent 0 50%
+    )
+    left/16px 100% repeat-x;
+  opacity: 0.9;
 }
 
 /* === Music Section layout (fixed) === */
@@ -109,7 +190,7 @@
   padding: 2.5rem 2rem;
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid var(--pink-soft);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
 }
 
 .about-music-title {
@@ -121,9 +202,11 @@
   margin-bottom: 0.5rem;
 }
 
-.about-music-desc { margin-bottom: 1.5rem; }
+.about-music-desc {
+  margin-bottom: 1.5rem;
+}
 
-/* Two-column grid: Daily3 on left, embeds stacked on right */
+/* Two-column grid: Song of the Day on left, embeds stacked on right */
 .music-grid-2col {
   display: grid;
   grid-template-columns: 1.4fr 1fr; /* left wider */
@@ -131,7 +214,10 @@
   align-items: start;
 }
 
-.music-left { min-width: 0; }   /* prevents overflow */
+.music-left {
+  min-width: 0;
+}
+
 .music-right {
   display: grid;
   grid-template-rows: auto auto;
@@ -139,7 +225,11 @@
   min-width: 0;
 }
 
-.music-panel { display: flex; flex-direction: column; gap: 8px; }
+.music-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
 .music-subtitle {
   font-weight: 700;
@@ -151,17 +241,18 @@
 /* Make embeds behave */
 .music-panel iframe {
   width: 100%;
-  height: 200px;    /* matches JSX */
+  height: 200px; /* matches JSX */
   border: 0;
   border-radius: 6px;
   display: block;
-  /* prevent overlay / stacking weirdness */
   position: relative;
   z-index: 0;
 }
 
 /* Hover micro-interaction (optional) */
-.music-panel iframe:hover { transform: none; }
+.music-panel iframe:hover {
+  transform: none;
+}
 
 /* Responsive: stack columns on smaller screens */
 @media (max-width: 980px) {
@@ -170,5 +261,110 @@
   }
   .music-right {
     grid-template-rows: auto auto;
+  }
+}
+
+/* === SONG OF THE DAY CARD — HIGH CONTRAST VERSION === */
+
+.music-card {
+  position: relative;
+  padding: 1.5rem 1.75rem;
+  border-radius: 16px;
+
+  /* ✨ NEW readable background */
+  background: rgba(255, 215, 235, 0.75); /* soft pink glass */
+
+  border: 1px solid var(--pink-primary);
+  box-shadow:
+    0 0 18px rgba(255, 45, 175, 0.20),
+    0 6px 18px rgba(0, 0, 0, 0.12);
+
+  backdrop-filter: blur(10px);
+  color: var(--black);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Light glow, not chaotic */
+.music-card::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 105, 180, 0.2),
+    transparent 70%
+  );
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Much softer texture */
+.music-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 0);
+  background-size: 7px 7px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.music-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 26px rgba(255, 45, 175, 0.3),
+    0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* Text stays crisp */
+.music-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  opacity: 0.7;
+  margin-bottom: 0.4rem;
+}
+
+.music-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--black);
+}
+
+.music-artist {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin: 0.25rem 0 0.7rem;
+}
+
+.music-embed-wrapper {
+  margin-top: 0.4rem;
+}
+
+.music-note {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+/* iframe fix */
+.music-embed-wrapper iframe {
+  width: 100%;
+  border-radius: 12px;
+  border: none;
+}
+
+.music-note {
+  margin-top: 0.8rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* mobile spacing if needed */
+@media (max-width: 768px) {
+  .music-card {
+    margin-bottom: 1.25rem;
   }
 }
