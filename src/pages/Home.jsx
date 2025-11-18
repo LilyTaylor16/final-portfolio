@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
-import './Home.css';
-import { spray4, circles, star1, squares } from '../assets/graphics';
-import { Link } from 'react-router-dom';
-import Logo from '../assets/images/logo.svg';
+// src/pages/Home.jsx
+import React, { useEffect } from "react";
+import "./Home.css";
+import { spray4, circles, star1, squares } from "../assets/graphics";
+import { Link } from "react-router-dom";
+import Logo from "../assets/images/logo.svg";
 import { Helmet } from "react-helmet";
 
 // Rotator
@@ -16,37 +17,54 @@ import about4 from "../assets/about/4.jpg";
 import about5 from "../assets/about/5.jpg";
 import about6 from "../assets/about/6.jpg";
 
-// ---- NEW: Hand-drawn SVG headers (homepage only) ----
+// ---- Hand-drawn SVG headers (homepage only) ----
 import WorkHeader from "../assets/graphics/headers/workblack.svg";
 import AboutHeader from "../assets/graphics/headers/aboutblack.svg";
 import ContactHeader from "../assets/graphics/headers/contactblack.svg";
 
 function Home() {
-  // keep your fade-in utility, harmless
+  // fade-in observer
   useEffect(() => {
-    const els = document.querySelectorAll('.preview-section, .split-full');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
+    const els = document.querySelectorAll(".preview-section, .split-full");
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
     els.forEach((el) => obs.observe(el));
     return () => obs.disconnect();
   }, []);
 
   // RIGHT-SIDE ROTATORS
   const projectSlides = [
-    { src: "/Projects/punkpucker/heartbreaker-can.png", alt: "Punk & Pucker Heartbreaker can" },
-    { src: "/Projects/punkpucker/hyper-zest-can.png",  alt: "Punk & Pucker Hyper Zest can" },
-    { src: "/Projects/Orbit/w7.png",                   alt: "Orbit Studios website wireframe" },
-    { src: "/Projects/deftones/deftones-cover.png",    alt: "Deftones portrait illustration" },
-    { src: "/zine/lilyzine5.jpg",                      alt: "Lyrics of Life zine spread" },
+    {
+      src: "/Projects/punkpucker/heartbreaker-can.png",
+      alt: "Punk & Pucker Heartbreaker can",
+    },
+    {
+      src: "/Projects/punkpucker/hyper-zest-can.png",
+      alt: "Punk & Pucker Hyper Zest can",
+    },
+    {
+      src: "/Projects/Orbit/w7.png",
+      alt: "Orbit Studios website wireframe",
+    },
+    {
+      src: "/Projects/deftones/deftones-cover.png",
+      alt: "Deftones portrait illustration",
+    },
+    {
+      src: "/zine/lilyzine5.jpg",
+      alt: "Lyrics of Life zine spread",
+    },
   ];
 
-  // About images: imported above from src/assets/about
   const aboutSlides = [
     { src: about6, alt: "Personal photo collage 6" },
     { src: about5, alt: "Personal photo collage 5" },
@@ -56,12 +74,11 @@ function Home() {
     { src: about1, alt: "Personal photo collage 1" },
   ];
 
-  // Contact: reused graphics (these are more decorative vibes)
   const contactSlides = [
-    { src: star1,   alt: "Graphic star element" },
+    { src: star1, alt: "Graphic star element" },
     { src: squares, alt: "Geometric squares graphic" },
     { src: circles, alt: "Circular background graphic" },
-    { src: spray4,  alt: "Spray paint texture graphic" },
+    { src: spray4, alt: "Spray paint texture graphic" },
   ];
 
   return (
@@ -75,15 +92,50 @@ function Home() {
       </Helmet>
 
       {/* Background Graphics (decorative only) */}
-      <img src={circles} alt="" aria-hidden="true" className="bg-graphic circles" />
-      <img src={circles} alt="" aria-hidden="true" className="bg-graphic circles dup1" />
-      <img src={circles} alt="" aria-hidden="true" className="bg-graphic circles dup2" />
+      <img
+        src={circles}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic circles"
+      />
+      <img
+        src={circles}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic circles dup1"
+      />
+      <img
+        src={circles}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic circles dup2"
+      />
 
-      <img src={squares} alt="" aria-hidden="true" className="bg-graphic squares" />
-      <img src={squares} alt="" aria-hidden="true" className="bg-graphic squares dup1" />
+      <img
+        src={squares}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic squares"
+      />
+      <img
+        src={squares}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic squares dup1"
+      />
 
-      <img src={star1} alt="" aria-hidden="true" className="bg-graphic star1" />
-      <img src={star1} alt="" aria-hidden="true" className="bg-graphic star1 dup1" />
+      <img
+        src={star1}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic star1"
+      />
+      <img
+        src={star1}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic star1 dup1"
+      />
 
       <img src={spray4} alt="" aria-hidden="true" className="spray-bg" />
 
@@ -99,8 +151,14 @@ function Home() {
           </div>
 
           <h1 className="hero-title">Lily Taylor</h1>
-          <p className="hero-tagline">Design & Motion student — turning ideas into visuals & stories</p>
-          <Link to="/work" className="hero-btn btn--spike">See My Work</Link>
+          <p className="hero-tagline">
+            Design & Motion student — turning ideas into visuals & stories
+          </p>
+          <div className="hero-btn-row">
+            <Link to="/work" className="hero-btn btn--spike">
+              See My Work
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -111,7 +169,11 @@ function Home() {
           <div className="flow-node" aria-hidden="true" />
           <div className="split-col split-left">
             <h2 className="split-title rule-to-spine" aria-label="Work">
-              <img src={WorkHeader} alt="Work section header" className="split-title-img" />
+              <img
+                src={WorkHeader}
+                alt="Work section header"
+                className="split-title-img"
+              />
             </h2>
             <p className="split-sub">Branding, UI, motion, interactive</p>
             <div className="split-links">
@@ -131,11 +193,20 @@ function Home() {
           <div className="flow-node" aria-hidden="true" />
           <div className="split-col split-left">
             <h2 className="split-title rule-to-spine" aria-label="About">
-              <img src={AboutHeader} alt="About section header" className="split-title-img" />
+              <img
+                src={AboutHeader}
+                alt="About section header"
+                className="split-title-img"
+              />
             </h2>
-            <p className="split-sub">A little bit about why I am the way I am. </p>
+            <p className="split-sub">
+              A little bit about why I am the way I am.
+            </p>
             <div className="split-links">
               <Link to="/about">Read my story →</Link>
+              <Link to="/about#song-of-the-day" className="sotd-btn-home">
+                Go to Song of the Day
+              </Link>
             </div>
           </div>
           <div className="split-col split-right">
@@ -148,7 +219,11 @@ function Home() {
           <div className="flow-node" aria-hidden="true" />
           <div className="split-col split-left">
             <h2 className="split-title rule-to-spine" aria-label="Contact">
-              <img src={ContactHeader} alt="Contact section header" className="split-title-img" />
+              <img
+                src={ContactHeader}
+                alt="Contact section header"
+                className="split-title-img"
+              />
             </h2>
             <p className="split-sub">Wanna chat?</p>
             <div className="split-links">
