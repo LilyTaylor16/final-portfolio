@@ -1,107 +1,348 @@
+/* kill any weird global dimming on this page */
+.zine-wrapper,
+.zine-wrapper * {
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* base layout */
+
 .zine-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 4rem 2rem;
-    background-color: var(--off-white);
-    max-width: 100vw;
-    overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-color: var(--off-white);
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* breadcrumb / back link */
+
+.zine-breadcrumb {
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 1.5rem;
+}
+
+.zine-back-link {
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: var(--black);
+  opacity: 0.7;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.zine-back-link:hover {
+  opacity: 1;
+  transform: translateX(-2px);
+}
+
+/* header area */
+
+.zine-header {
+  max-width: 1100px;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.zine-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  color: var(--pink-primary);
+}
+
+.zine-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--black);
+  max-width: 650px;
+  margin-bottom: 1.5rem;
+}
+
+.zine-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+}
+
+/* gallery / spreads */
+
+.zine-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.zine-spread {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.75rem 2rem;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+  max-width: 1100px;
+  animation: zinePageFade 0.4s ease;
+}
+
+.zine-single {
+  justify-content: center;
+}
+
+.zine-gallery img {
+  width: 45vw;
+  max-width: 480px;
+  height: auto;
+  border-radius: 0;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zine-gallery img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
+
+/* nav arrows + page indicator */
+
+.zine-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.zine-arrow {
+  background-color: var(--pink-soft);
+  border: none;
+  border-radius: 0;
+  width: 42px;
+  height: 42px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.zine-arrow:hover:not(:disabled) {
+  background-color: var(--pink-primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.zine-arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.zine-page-indicator {
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* main description card */
+
+.zine-description {
+  max-width: 800px;
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: left;
+  color: var(--black);
+  padding: 1.75rem 2rem;
+  background-color: #ffffff;
+  border: 1px solid var(--pink-soft);
+  border-radius: 0;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.05);
+}
+
+.zine-description h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  margin-top: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.zine-description h2:first-of-type {
+  margin-top: 0;
+}
+
+.zine-description p {
+  margin-bottom: 0.9rem;
+}
+
+/* process section: raw photos + InDesign */
+
+.zine-process {
+  max-width: 1100px;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding: 1.75rem 2rem 2.5rem;
+  background-color: #ffffff;
+  border-radius: 0;
+  border: 1px solid var(--pink-soft);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.05);
+}
+
+.zine-process h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.zine-process p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* 🎞 TICKER-STYLE CAMERA STRIP */
+
+.zine-carousel {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem 0;
+}
+
+.zine-carousel-track {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  animation: zineTickerScroll 35s linear infinite;
+}
+
+.zine-carousel-item {
+  flex: 0 0 auto;
+  width: 200px; /* bigger film strip frames */
+}
+
+.zine-carousel-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.22);
+  display: block;
+  object-fit: cover;
+}
+
+/* pause ticker on hover */
+.zine-carousel:hover .zine-carousel-track {
+  animation-play-state: paused;
+}
+
+@keyframes zineTickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* InDesign block */
+
+.zine-indesign-block {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.zine-indesign-text h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.zine-indesign-text p {
+  margin-bottom: 0;
+}
+
+.zine-indesign-image img {
+  width: 100%;
+  border-radius: 0;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+/* animation */
+
+@keyframes zinePageFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
   }
-  
-  .zine-title {
-    font-size: 3rem;
-    font-weight: 900;
-    margin-bottom: 2rem;
-    color: var(--pink-primary);
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* responsive */
+
+@media (max-width: 900px) {
+  .zine-header {
     text-align: center;
   }
-  
 
-  .zine-gallery {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
+  .zine-meta {
+    justify-content: center;
   }
-  
+
+  .zine-indesign-block {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .zine-wrapper {
+    padding: 3rem 1.25rem;
+  }
+
   .zine-spread {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    padding: 1.25rem 1.4rem;
   }
-  
-  .zine-single {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .zine-gallery img {
-    width: 45vw;
-    max-width: 500px;
-    height: auto;
-    border-radius: 6px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease;
-  }
-  
-  .zine-gallery img:hover {
-    transform: scale(1.02);
-  }
-  
-  .zine-nav {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 1rem;
-  }
-  
-  .zine-arrow {
-    background-color: var(--pink-soft);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .zine-arrow:hover {
-    background-color: var(--pink-primary);
-    color: white;
-  }
-  
-  .zine-description {
-    max-width: 800px;
-    margin-top: 3rem;
-    font-size: 1rem;
-    line-height: 1.7;
-    text-align: left;
-    color: var(--black);
-    padding: 1.5rem;
-    background-color: white;
-    border: 1px solid var(--pink-soft);
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  }
-  
-  .zine-description p {
-    margin-bottom: 1rem;
-  }
-  
 
-  @media (max-width: 768px) {
-    .zine-spread {
-      flex-direction: column;
-      gap: 1rem;
-    }
-  
-    .zine-gallery img {
-      width: 90vw;
-    }
-  
-    .zine-description {
-      padding: 1rem;
-    }
+  .zine-gallery img {
+    width: 90vw;
+    max-width: 100%;
   }
+
+  .zine-description {
+    padding: 1.4rem 1.25rem;
+  }
+
+  .zine-title {
+    font-size: 2.4rem;
+  }
+
+  .zine-carousel-item {
+    width: 150px; /* a bit smaller on small screens */
+  }
+}
+
+/* kill global overlay if applied to body */
+body.zine-full-colour,
+body.zine-full-colour #root,
+body.zine-full-colour main {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+body.zine-full-colour::before {
+  display: none !important;
+}

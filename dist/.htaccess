@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /
+
+# Let the server serve existing files/folders normally
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Everything else → send to index.html (React handles routing)
+RewriteRule . /index.html [L]

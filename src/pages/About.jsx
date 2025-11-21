@@ -1,7 +1,7 @@
 // src/pages/About.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./About.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import img1 from "../assets/about/1.jpg";
@@ -13,7 +13,7 @@ import img6 from "../assets/about/6.jpg";
 import southAfricaVideo from "../assets/about/SouthAfrica.mp4";
 import Logo from "../assets/images/logo.svg";
 
-// new imports
+// music components
 import SongOfTheDay from "../components/SongOfTheDay";
 import AlbumOfTheMonth from "../components/AlbumOfTheMonth";
 
@@ -27,6 +27,37 @@ import {
 } from "../assets/graphics";
 
 function About() {
+  const location = useLocation();
+  const [showButton, setShowButton] = useState(false);
+
+  // show/hide back-to-top
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowButton(window.scrollY > 500);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // run once on mount
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // handle #song-of-the-day hash scroll
+  useEffect(() => {
+    if (location.hash === "#song-of-the-day") {
+      const el = document.getElementById("song-of-the-day");
+      if (el) {
+        // small timeout to ensure layout is painted
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 0);
+      }
+    }
+  }, [location]);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="about-wrapper">
       <Helmet>
@@ -38,12 +69,42 @@ function About() {
       </Helmet>
 
       {/* Background art (decorative) */}
-      <img src={spray1} alt="" aria-hidden="true" className="bg-graphic spray spray1" />
-      <img src={spray4} alt="" aria-hidden="true" className="bg-graphic spray spray4" />
-      <img src={spray6} alt="" aria-hidden="true" className="bg-graphic spray spray6" />
-      <img src={star1} alt="" aria-hidden="true" className="bg-graphic star star1" />
-      <img src={star2} alt="" aria-hidden="true" className="bg-graphic star star2" />
-      <img src={circles} alt="" aria-hidden="true" className="bg-graphic circles" />
+      <img
+        src={spray1}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic spray spray1"
+      />
+      <img
+        src={spray4}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic spray spray4"
+      />
+      <img
+        src={spray6}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic spray spray6"
+      />
+      <img
+        src={star1}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic star star1"
+      />
+      <img
+        src={star2}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic star star2"
+      />
+      <img
+        src={circles}
+        alt=""
+        aria-hidden="true"
+        className="bg-graphic circles"
+      />
 
       <div className="about-logo-container">
         <Link to="/">
@@ -61,9 +122,9 @@ function About() {
             premature as an elective caesarean. My first breaths, steps,
             smells, and touches were all experienced in the hot, tropical
             beaches and lush jungles of Borneo. I truly believe those early
-            moments left a mark on my subconscious — ever since, I’ve been drawn
-            to warmth, to the beach, to anything that feels a little wild and
-            alive.
+            moments left a mark on my subconscious — ever since, I’ve been
+            drawn to warmth, to the beach, to anything that feels a little wild
+            and alive.
           </p>
         </div>
 
@@ -151,14 +212,17 @@ function About() {
         </div>
 
         {/* === MUSIC SECTION === */}
-        <section className="about-music-section">
+        <section
+          className="about-music-section"
+          id="song-of-the-day"
+        >
           <h2 className="about-music-title">Music</h2>
           <p className="about-music-desc">
-            Music is a huge part of my life. Here is a daily song feature and an album I’ve had on repeat.
+            Music is a huge part of my life. Here is a daily song feature and an
+            album I’ve had on repeat.
           </p>
 
           <div className="music-grid-2col">
-
             {/* LEFT: Song of the Day */}
             <div className="music-left">
               <SongOfTheDay />
@@ -166,11 +230,8 @@ function About() {
 
             {/* RIGHT: Full playlist + album */}
             <div className="music-right">
-
               <div className="music-panel">
                 <h4 className="music-subtitle">Full Playlist</h4>
-
-                {/* ✅ FIXED: correct embed playlist */}
                 <iframe
                   src="https://open.spotify.com/embed/playlist/2Jyo5t2r0wGybqlL85baRT?utm_source=generator"
                   width="100%"
@@ -185,12 +246,20 @@ function About() {
               <div className="music-panel">
                 <AlbumOfTheMonth blurb="Album of the Month — one of my current favourites." />
               </div>
-
             </div>
           </div>
         </section>
         {/* === /MUSIC SECTION === */}
       </div>
+
+      {/* === BACK TO TOP BUTTON (SPIKY) === */}
+      <button
+        className={`back-to-top spiky-card ${showButton ? "show" : ""}`}
+        onClick={scrollToTop}
+        aria-label="Back to top"
+      >
+        Back to top ↑
+      </button>
     </div>
   );
 }
