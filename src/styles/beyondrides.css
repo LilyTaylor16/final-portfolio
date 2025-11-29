@@ -1,0 +1,402 @@
+/* src/styles/beyondrides.css */
+
+.beyond-page {
+    position: relative;
+    z-index: 10;
+    background: radial-gradient(circle at top, #1a0b16 0, #050505 38%, #020202 100%);
+    color: #f4f4f4;
+    padding: 110px 20px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* kill any weird overlay from global styles */
+  .beyond-page::before {
+    content: none !important;
+  }
+  
+  /* logo */
+  
+  .beyond-logo-link {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+  
+  .beyond-logo-img {
+    width: 64px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    transition: transform 0.25s ease, filter 0.25s ease;
+  }
+  
+  .beyond-logo-img:hover {
+    transform: scale(1.08) rotate(4deg);
+    filter: brightness(1.1);
+    cursor: pointer;
+  }
+  
+  /* hero */
+  
+  .beyond-hero {
+    text-align: left;
+    margin-bottom: 1.8rem;
+    position: relative;
+  }
+  
+  .beyond-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+    margin-bottom: 1.1rem;
+    backdrop-filter: blur(8px);
+  }
+  
+  .beyond-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    background: linear-gradient(110deg, var(--pink-primary), var(--pink-hot));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.4rem;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+  }
+  
+  .beyond-subtitle {
+    font-size: 1.05rem;
+    color: #d0d0d0;
+  }
+  
+  /* underline */
+  
+  .beyond-hero::after {
+    content: "";
+    display: block;
+    margin-top: 1.2rem;
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--pink-hot), transparent);
+    transform: skewX(-18deg);
+  }
+  
+  /* highlight strip under hero */
+  
+  .beyond-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    margin-bottom: 1.6rem;
+    font-size: 0.86rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #f4f4f4;
+    opacity: 0.9;
+  }
+  
+  .beyond-highlights p {
+    margin: 0;
+    white-space: nowrap;
+  }
+  
+  /* shared section base */
+  
+  .beyond-section {
+    margin-bottom: 3rem;
+    position: relative;
+    padding-top: 1.4rem;
+    padding-bottom: 0.6rem;
+  }
+  
+  .beyond-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    opacity: 0.8;
+    pointer-events: none;
+  }
+  
+  .beyond-section-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 1.1rem;
+  }
+  
+  .beyond-section-intro {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: #dedede;
+    max-width: 740px;
+    margin-bottom: 1.6rem;
+  }
+  
+  /* header row with pill */
+  
+  .beyond-section-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .beyond-pill {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  /* main video section up top */
+  
+  .beyond-video-section {
+    margin-bottom: 2.6rem;
+  }
+  
+  .beyond-video-main {
+    /* slightly tighter spacing since this is near the top */
+  }
+  
+  .beyond-video-text {
+    font-size: 0.99rem;
+    color: #d4d4d4;
+    max-width: 760px;
+    margin-bottom: 1.2rem;
+  }
+  
+  .beyond-video-frame {
+    border-radius: 0;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow:
+      0 0 0 1px rgba(255, 94, 191, 0.25),
+      0 24px 60px rgba(0, 0, 0, 0.9);
+    padding: 0.85rem;
+    background: #050505;
+  }
+  
+  .beyond-video {
+    width: 100%;
+    max-height: 520px;
+    display: block;
+    border-radius: 0;
+  }
+  
+  /* main overview layout (image + text) */
+  
+  .beyond-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+    gap: 2.2rem;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+  }
+  
+  .beyond-main-image-wrap {
+    position: relative;
+    max-width: 420px;
+  }
+  
+  .beyond-main-image-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -12px -16px auto auto;
+    border-top: 2px solid var(--pink-hot);
+    border-right: 2px solid var(--pink-hot);
+    transform: skewX(-14deg);
+    pointer-events: none;
+  }
+  
+  .beyond-main-image-wrap::after {
+    content: "";
+    position: absolute;
+    inset: auto auto -12px -16px;
+    border-bottom: 2px solid var(--pink-primary);
+    border-left: 2px solid var(--pink-primary);
+    transform: skewX(12deg);
+    pointer-events: none;
+  }
+  
+  .beyond-main-image {
+    width: 100%;
+    display: block;
+    border-radius: 0;
+    box-shadow:
+      0 0 40px rgba(0, 0, 0, 0.9),
+      0 0 60px rgba(255, 94, 191, 0.25);
+    background: #050505;
+  }
+  
+  .beyond-main-text {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+  }
+  
+  .beyond-role p,
+  .beyond-story p,
+  .beyond-audio p,
+  .beyond-reflection p {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: #dedede;
+    margin-bottom: 1.3rem;
+  }
+  
+  /* audio grid */
+  
+  .beyond-audio-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+    gap: 1.8rem;
+    align-items: flex-start;
+    margin-top: 0.4rem;
+  }
+  
+  .beyond-audio-image {
+    width: 100%;
+    border-radius: 0;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow:
+      0 0 0 1px rgba(255, 94, 191, 0.25),
+      0 18px 46px rgba(0, 0, 0, 0.9);
+    background: #050505;
+  }
+  
+  /* bloopers video section shares video styles */
+  
+  .beyond-bloopers .beyond-video-frame {
+    margin-top: 0.6rem;
+  }
+  
+  /* back button */
+  
+  .beyond-back-button {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.96rem;
+    font-weight: 600;
+    color: var(--pink-primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding: 0.55rem 1.3rem;
+    border: 1px solid var(--pink-primary);
+    background: transparent;
+    transition: background 0.24s ease, color 0.24s ease, transform 0.18s ease;
+  }
+  
+  .beyond-back-button:hover {
+    color: #050505;
+    background: var(--pink-primary);
+    transform: translateY(-1px);
+  }
+  
+  /* responsive: tablet */
+  
+  @media (max-width: 900px) {
+    .beyond-page {
+      padding: 100px 16px 60px;
+    }
+  
+    .beyond-title {
+      font-size: 2.7rem;
+    }
+  
+    .beyond-main {
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+  
+    .beyond-main-image-wrap {
+      max-width: 380px;
+    }
+  
+    .beyond-audio-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* responsive: small phones */
+  
+  @media (max-width: 520px) {
+    .beyond-page {
+      padding: 90px 14px 50px;
+    }
+  
+    .beyond-hero {
+      text-align: center;
+    }
+  
+    .beyond-tag {
+      margin: 0 auto 1rem;
+    }
+  
+    .beyond-hero::after {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .beyond-title {
+      font-size: 2.2rem;
+    }
+  
+    .beyond-subtitle {
+      font-size: 0.98rem;
+    }
+  
+    .beyond-highlights {
+      justify-content: center;
+      text-align: center;
+    }
+  
+    .beyond-highlights p {
+      white-space: normal;
+    }
+  
+    .beyond-section-header-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .beyond-video-text,
+    .beyond-main-text,
+    .beyond-section-intro,
+    .beyond-role p,
+    .beyond-story p,
+    .beyond-audio p,
+    .beyond-reflection p {
+      font-size: 0.97rem;
+    }
+  
+    .beyond-back-button {
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+  }
+  /* links for Emily and Kaveen */
+.beyond-link {
+    color: var(--pink-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .beyond-link:hover {
+    color: var(--pink-hot);
+    opacity: 0.9;
+  }
+  

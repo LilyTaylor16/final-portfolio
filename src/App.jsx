@@ -24,7 +24,7 @@ import PunkPucker from "./pages/projects/PunkPucker";
 import Zine from "./pages/projects/Zine";
 import Deftones from "./pages/projects/Deftones";
 import OrbitStudios from "./pages/projects/Orbit";
-import Project5 from "./pages/projects/Project5";
+import BeyondRides from "./pages/projects/BeyondRides";
 import Project6 from "./pages/projects/Project6";
 import Project7 from "./pages/projects/Project7";
 import Project8 from "./pages/projects/Project8";
@@ -83,7 +83,7 @@ function App() {
             <Route path="/projects/zine" element={<Zine />} />
             <Route path="/projects/deftones" element={<Deftones />} />
             <Route path="/projects/orbitstudios" element={<OrbitStudios />} />
-            <Route path="/projects/project5" element={<Project5 />} />
+            <Route path="/projects/beyondrides" element={<BeyondRides />} />
             <Route path="/projects/project6" element={<Project6 />} />
             <Route path="/projects/project7" element={<Project7 />} />
             <Route path="/projects/project8" element={<Project8 />} />

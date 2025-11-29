@@ -1,92 +1,348 @@
 .deftones-page {
-    background-color: #0a0a0a;
-    color: #f1f1f1;
-    padding: 120px 20px 80px;
-    max-width: 1000px;
-    margin: 0 auto;
-    font-family: 'Poppins', sans-serif;
+  position: relative;
+  z-index: 10;
+  background: radial-gradient(circle at top, #1a0b16 0, #050505 38%, #020202 100%);
+  color: #f4f4f4;
+  padding: 120px 20px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* stop any random overlay on this page */
+.deftones-page::before {
+  content: none !important;
+}
+
+/* logo */
+
+.deftones-logo-link {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.deftones-logo-img {
+  width: 60px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease;
+}
+
+.deftones-logo-img:hover {
+  transform: scale(1.08) rotate(4deg);
+  cursor: pointer;
+}
+
+/* hero */
+
+.deftones-hero {
+  text-align: left;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.deftones-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  margin-bottom: 1.3rem;
+  backdrop-filter: blur(8px);
+}
+
+.deftones-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(120deg, var(--pink-primary), var(--pink-hot));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.deftones-subtitle {
+  font-size: 1.05rem;
+  color: #d0d0d0;
+}
+
+/* hero underline */
+
+.deftones-hero::after {
+  content: "";
+  display: block;
+  margin-top: 1.4rem;
+  width: 140px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pink-hot), transparent);
+  transform: skewX(-18deg);
+}
+
+/* main layout */
+
+.deftones-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 2.2rem;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+.deftones-main-image-wrap {
+  position: relative;
+}
+
+.deftones-main-image-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -10px -14px auto auto;
+  border-top: 2px solid var(--pink-hot);
+  border-right: 2px solid var(--pink-hot);
+  transform: skewX(-14deg);
+  pointer-events: none;
+}
+
+.deftones-main-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -12px -16px;
+  border-bottom: 2px solid var(--pink-primary);
+  border-left: 2px solid var(--pink-primary);
+  transform: skewX(10deg);
+  pointer-events: none;
+}
+
+.deftones-image {
+  width: 100%;
+  max-width: 730px;
+  display: block;
+  border-radius: 0;
+  box-shadow:
+    0 0 40px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(255, 94, 191, 0.25);
+  transition: transform 0.35s ease, filter 0.35s ease;
+  transform-origin: center;
+}
+
+.deftones-image:hover {
+  transform: translateY(-4px) scale(1.02);
+  filter: contrast(1.1) saturate(1.1);
+}
+
+.deftones-main-text {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #e0e0e0;
+}
+
+.deftones-section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 1.1rem;
+}
+
+.deftones-main-text p {
+  margin-bottom: 1.3rem;
+}
+
+.deftones-tools {
+  font-size: 0.95rem;
+  color: #b9b9b9;
+}
+
+/* shared section base */
+
+.deftones-section {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+/* ghost lines behind sections */
+
+.deftones-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* process and reflection text */
+
+.deftones-process,
+.deftones-reflection {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #dedede;
+  padding-top: 1.4rem;
+  padding-bottom: 1.2rem;
+}
+
+.deftones-process p,
+.deftones-reflection p {
+  margin-bottom: 1.3rem;
+}
+
+/* video section */
+
+.deftones-video-section {
+  padding-top: 1.4rem;
+  padding-bottom: 1.6rem;
+}
+
+.deftones-section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.deftones-pill {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.deftones-video-text {
+  font-size: 0.98rem;
+  color: #d4d4d4;
+  max-width: 640px;
+  margin-bottom: 1.4rem;
+}
+
+/* ⭐️ UPDATED VIDEO WRAPPER */
+.deftones-video-frame {
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 0 0 1px rgba(255, 94, 191, 0.25),
+    0 24px 60px rgba(0, 0, 0, 0.9);
+  padding: 1rem;
+  background: #050505;
+
+  /* new: keep video SMALL and centered */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* video element */
+.deftones-video {
+  width: 100%;
+  display: block;
+  border-radius: 0;
+}
+
+/* back link */
+
+.deftones-back-button {
+  display: inline-block;
+  margin-top: 0.3rem;
+  text-decoration: none;
+  color: var(--pink-primary);
+  font-weight: 600;
+  font-size: 0.96rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 0.55rem 1.2rem;
+  border: 1px solid var(--pink-primary);
+  background: transparent;
+  transition: background 0.24s ease, color 0.24s ease, transform 0.18s ease;
+}
+
+.deftones-back-button:hover {
+  background: var(--pink-primary);
+  color: #050505;
+  transform: translateY(-1px);
+}
+
+/* --------- responsive: tablet and down --------- */
+
+@media (max-width: 860px) {
+  .deftones-page {
+    padding: 100px 16px 60px;
   }
-  .deftones-logo-link {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
+
+  .deftones-main {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
   }
-  
-  .deftones-logo-img {
-    width: 60px;
-    filter: brightness(0) invert(1);
-    transition: transform 0.3s ease;
+
+  .deftones-main-image-wrap {
+    order: -1;
   }
-  
-  .deftones-logo-img:hover {
-    transform: scale(1.1) rotate(6deg);
-    cursor: pointer;
+
+  .deftones-title {
+    font-size: 2.6rem;
   }
-  
-  
+
+  .deftones-section-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* --------- extra mobile polish: small phones --------- */
+
+@media (max-width: 520px) {
+  .deftones-page {
+    padding: 90px 14px 50px;
+  }
+
   .deftones-hero {
     text-align: center;
-    margin-bottom: 3rem;
   }
-  
+
+  .deftones-tag {
+    margin: 0 auto 1.1rem;
+  }
+
+  .deftones-hero::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .deftones-title {
-    font-size: 4rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-    background: linear-gradient(90deg, var(--pink-primary), var(--pink-hot));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
   }
-  
+
   .deftones-subtitle {
-    font-size: 1.1rem;
-    font-style: italic;
-    color: #bbbbbb;
+    font-size: 0.98rem;
   }
-  
-  .deftones-gallery {
-    margin-bottom: 3rem;
-    display: flex;
-    justify-content: center;
+
+  .deftones-main {
+    gap: 1.5rem;
   }
-  
-  .deftones-image {
-    width: 100%;
-    max-width: 700px;
-    border-radius: 12px;
-    box-shadow: 0 12px 40px rgba(255, 94, 191, 0.15);
-    transition: transform 0.3s ease, filter 0.3s ease;
+
+  .deftones-main-text {
+    font-size: 0.97rem;
   }
-  
-  .deftones-image:hover {
-    transform: scale(1.02);
-    filter: contrast(1.1) saturate(1.1);
+
+  .deftones-process,
+  .deftones-reflection {
+    font-size: 0.97rem;
   }
-  
-  .deftones-description {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 3rem;
-    color: #dcdcdc;
+
+  .deftones-video-text {
+    font-size: 0.95rem;
   }
-  
-  .deftones-description p {
-    margin-bottom: 1.5rem;
-  }
-  
+
   .deftones-back-button {
-    display: inline-block;
-    text-decoration: none;
-    color: var(--pink-primary);
-    font-weight: 600;
-    font-size: 1rem;
-    transition: color 0.3s ease;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    box-sizing: border-box;
   }
-  
-  .deftones-back-button:hover {
-    color: white;
-  }
-  
+}

@@ -1,3 +1,4 @@
+// src/pages/Work.jsx
 import React from "react";
 import "../styles/Work.css";
 import { Link } from "react-router-dom";
@@ -11,7 +12,7 @@ const projects = [
     img: "/Projects/punkpucker/heartbreaker-can.png",
     category: "Brand Identity · Packaging · Web",
     tagline:
-      "Sour beer brand with bold visual identity, packaging system, and a digital experience.",
+      "Sour beer brand with bold visual identity, packaging system and a digital experience.",
   },
   {
     title: "Zine",
@@ -19,7 +20,7 @@ const projects = [
     img: "/zine/lilyzine5.jpg",
     category: "Editorial · Experimental",
     tagline:
-      "A 14-page digital zine combining childhood photos, lyrics, and collage-based layout design.",
+      "A 14 page digital zine combining childhood photos, lyrics and collage based layout design.",
   },
   {
     title: "Deftones Portrait",
@@ -27,7 +28,7 @@ const projects = [
     img: "/Projects/deftones/deftones-cover.png",
     category: "Illustration · Digital Art",
     tagline:
-      "Vector portrait inspired by Deftones’ 'Around the Fur', fully recreated in Illustrator.",
+      "Vector portrait inspired by Deftones Around the Fur, fully recreated in Illustrator.",
   },
   {
     title: "Orbit Studios",
@@ -38,18 +39,18 @@ const projects = [
       "Brand identity and web experience for a fictional recording studio for independent artists.",
   },
   {
-    title: "Project 5",
-    path: "/projects/project5",
-    img: "/Projects/project5.png",
-    category: "Case Study Coming Soon",
+    title: "Beyond Rides",
+    path: "/projects/beyondrides",
+    img: "/Projects/beyondrides/beyondridespreview.png",
+    category: "Film · Audio · Storytelling",
     tagline:
-      "New work in progress. This slot will be replaced with a full case study.",
+      "Promotional video for a fictional ride share app, with full sound design, logo work and on screen animation built with my team.",
   },
   {
     title: "Project 6",
     path: "/projects/project6",
     img: "/Projects/project6.png",
-    category: "Case Study Coming Soon",
+    category: "Case study coming soon",
     tagline:
       "New work in progress. This slot will be replaced with a full case study.",
   },
@@ -57,7 +58,7 @@ const projects = [
     title: "Project 7",
     path: "/projects/project7",
     img: "/Projects/project7.png",
-    category: "Case Study Coming Soon",
+    category: "Case study coming soon",
     tagline:
       "New work in progress. This slot will be replaced with a full case study.",
   },
@@ -65,7 +66,7 @@ const projects = [
     title: "Project 8",
     path: "/projects/project8",
     img: "/Projects/project8.png",
-    category: "Case Study Coming Soon",
+    category: "Case study coming soon",
     tagline:
       "New work in progress. This slot will be replaced with a full case study.",
   },
@@ -78,11 +79,11 @@ function Work() {
         <title>My Work | Lily Taylor Portfolio</title>
         <meta
           name="description"
-          content="Selected projects by Lily Taylor, including brand identity, web design, illustration, and interactive media created during BCIT’s New Media Design & Web Development program and beyond."
+          content="Selected projects by Lily Taylor, including brand identity, web design, illustration and interactive media created during BCIT’s New Media Design and Web Development program and beyond."
         />
       </Helmet>
 
-      {/* Simple top nav with logo */}
+      {/* top nav with logo */}
       <header className="work-nav">
         <Link to="/" className="work-logo-link">
           <img
@@ -102,12 +103,12 @@ function Work() {
 
       <main className="work-wrapper">
         <section className="work-header">
-          <p className="section-label">Selected Projects</p>
+          <p className="section-label">Selected projects</p>
           <h1 className="work-title underline--spike">My Work</h1>
           <p className="work-subtitle">
-            A curated selection of branding, web, illustration, and motion
-            pieces. Each project includes process, context, and the role I
-            played in bringing it to life.
+            A mix of branding, web, illustration and motion pieces. Each project
+            shows the process, context and the role I played in bringing it to
+            life.
           </p>
         </section>
 

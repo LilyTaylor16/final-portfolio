@@ -11,7 +11,7 @@ function Deftones() {
         <title>Deftones Portrait | Illustrator Project by Lily Taylor</title>
         <meta
           name="description"
-          content="A stylized illustrated reinterpretation of Deftones' 'Around the Fur' album cover by Lily Taylor. Created entirely in Illustrator using the pen tool and in-depth reference research."
+          content="A stylized illustrated reinterpretation of the Deftones record Around the Fur by Lily Taylor. Created in Illustrator with the pen tool and layered color work."
         />
       </Helmet>
 
@@ -22,39 +22,102 @@ function Deftones() {
           className="deftones-logo-img"
         />
       </Link>
-    
+
       <header className="deftones-hero">
-        <h1 className="deftones-title">Deftones</h1>
-        <p className="deftones-subtitle">An illustrated reinterpretation of <em>Around the Fur</em></p>
+        <div className="deftones-tag">Illustrator study</div>
+        <h1 className="deftones-title">Deftones portrait</h1>
+        <p className="deftones-subtitle">
+          A vector portrait inspired by the Deftones record <em>Around the Fur</em>
+        </p>
       </header>
-    
-      <section className="deftones-gallery">
-        <img
-          src="/Projects/deftones/deftones-cover.png"
-          alt="Deftones Around the Fur inspired portrait illustration"
-          className="deftones-image"
-        />
+
+      {/* main layout: image and overview together so it feels alive and not like stacked blocks */}
+      <section className="deftones-main">
+        <div className="deftones-main-image-wrap">
+          <img
+            src="/Projects/deftones/deftones-cover.png"
+            alt="Deftones Around the Fur inspired portrait illustration by Lily Taylor"
+            className="deftones-image"
+          />
+        </div>
+
+        <div className="deftones-main-text">
+          <h2 className="deftones-section-title">Project overview</h2>
+          <p>
+            This portrait is my own version of the Deftones record <em>Around the Fur</em>. I wanted to take the original
+            cover and turn it into a clean vector build that still feels sweaty, noisy and a little uneasy the way the record sounds.
+          </p>
+          <p>
+            I built everything in Illustrator with the pen tool and an art reference. No tracing and no filters. Just slow plotting of shapes
+            and color and a lot of zoomed in moments staring at anchor points.
+          </p>
+          <p>
+            It fits really well with the rest of my work because it is sharp and graphic but still very emotional and rooted in music.
+          </p>
+          <p className="deftones-tools">
+            Tools used: Adobe Illustrator and a lot of patience.
+          </p>
+        </div>
       </section>
 
-      <section className="deftones-description">
+      {/* thought process */}
+      <section className="deftones-section deftones-process">
+        <h2 className="deftones-section-title">Thought process</h2>
         <p>
-          This portrait is my own stylized take on Deftones’ <em>Around the Fur</em> album cover.
-          Instead of mimicking the photo style, I reimagined the mood through minimalist illustration,
-          recreating the entire image using only the pen tool in Illustrator, and an artsistic reference photo.
+          I picked this record because the cover already has such a strong mood. It feels humid and a bit blurred and I was curious
+          if I could keep that feeling while turning it into a very clean vector portrait.
         </p>
         <p>
-          Every line was plotted manually — this project pushed my patience, sharpened my precision,
-          and really deepened my understanding of color balance and visual texture in flat vector work.
+          I started by blocking in the main shapes of the face and shoulders, then kept breaking everything down into smaller pieces.
+          Shadows, mid tones and highlights all sit in separate layers so I could push and pull the mood with color.
         </p>
         <p>
-          I wanted the final piece to feel emotional, a little offbeat, and full of layered meaning — just like the music.
-        </p>
-        <p>
-          Tools used: Adobe Illustrator and a lot of reference research.
+          The main focus was on light and color rather than exact likeness. I wanted it to feel like a person you recognise from the record
+          without trying to copy every tiny detail from the photo.
         </p>
       </section>
 
-      <Link to="/work" className="deftones-back-button">← Back to Work</Link>
+      {/* process video */}
+      <section className="deftones-section deftones-video-section">
+        <div className="deftones-section-header-row">
+          <h2 className="deftones-section-title">Process video</h2>
+          <span className="deftones-pill">Layers breakdown</span>
+        </div>
+        <p className="deftones-video-text">
+          I made this short video to show the different parts of the build and how many shapes are sitting under the final image.
+          It is all vector work built by hand. No quick tricks. Just a lot of small decisions.
+        </p>
+        <div className="deftones-video-frame">
+          <video
+            className="deftones-video"
+            controls
+            src="/Projects/deftones/Portrait.mp4"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+
+      {/* reflection */}
+      <section className="deftones-section deftones-reflection">
+        <h2 className="deftones-section-title">Reflection</h2>
+        <p>
+          This project ended up taking a lot longer than I expected. Building a portrait this way is basically a patience test.
+          It is all small moves and tiny tweaks instead of big dramatic changes.
+        </p>
+        <p>
+          It made me way more confident with the pen tool and with building faces in a graphic way. I also learned how much color can push a mood
+          even when the shapes stay really simple.
+        </p>
+        <p>
+          I like this piece because it feels honest to how I see music and design. It is clean and sharp on the surface but there is a lot of feeling
+          and noise sitting underneath.
+        </p>
+      </section>
+
+      <Link to="/work" className="deftones-back-button">
+        ← Back to Work
+      </Link>
     </div>
   );
 }
