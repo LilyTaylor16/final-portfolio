@@ -5,7 +5,6 @@ import "./styles/global.css";
 import "./App.css";
 import "./styles/variables.css";
 
-// Helmet for favicon + global meta
 import { Helmet } from "react-helmet";
 
 // Layout
@@ -25,25 +24,24 @@ import Zine from "./pages/projects/Zine";
 import Deftones from "./pages/projects/Deftones";
 import OrbitStudios from "./pages/projects/Orbit";
 import BeyondRides from "./pages/projects/BeyondRides";
-import Project6 from "./pages/projects/Project6";
+import TypographicAnatomy from "./pages/projects/TypographicAnatomy";
 import Project7 from "./pages/projects/Project7";
 import Project8 from "./pages/projects/Project8";
 
 function App() {
   return (
     <Router>
-      {/* Global helmet for favicon + social preview */}
       <Helmet>
         <link rel="icon" type="image/png" href="/favicon.png" />
 
         {/* Open Graph / social preview */}
         <meta
           property="og:title"
-          content="Lily Taylor | Designer & Creative Developer"
+          content="Lily Taylor | Designer and Creative Developer"
         />
         <meta
           property="og:description"
-          content="Portfolio of Lily Taylor — branding, web, motion, and interactive work created in BCIT’s New Media Design & Web Development program and beyond."
+          content="Portfolio of Lily Taylor with branding work web projects motion and interactive pieces created during BCIT New Media Design and Web Development and personal practice."
         />
         <meta
           property="og:image"
@@ -56,11 +54,11 @@ function App() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Lily Taylor | Designer & Creative Developer"
+          content="Lily Taylor | Designer and Creative Developer"
         />
         <meta
           name="twitter:description"
-          content="Portfolio of Lily Taylor — branding, web, motion, and interactive work."
+          content="Portfolio of Lily Taylor with design motion and interactive digital work."
         />
         <meta
           name="twitter:image"
@@ -72,23 +70,26 @@ function App() {
         <Header />
         <main className="main-content">
           <Routes>
-            {/* Main Pages */}
+            {/* Main pages */}
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/work" element={<Work />} />
             <Route path="/contact" element={<Contact />} />
 
-            {/* Project Pages */}
+            {/* Project pages */}
             <Route path="/projects/punkpucker" element={<PunkPucker />} />
             <Route path="/projects/zine" element={<Zine />} />
             <Route path="/projects/deftones" element={<Deftones />} />
             <Route path="/projects/orbitstudios" element={<OrbitStudios />} />
             <Route path="/projects/beyondrides" element={<BeyondRides />} />
-            <Route path="/projects/project6" element={<Project6 />} />
+            <Route path="/projects/typographicanatomy" element={<TypographicAnatomy />}
+            />
+
+            {/* Future projects */}
             <Route path="/projects/project7" element={<Project7 />} />
             <Route path="/projects/project8" element={<Project8 />} />
 
-            {/* 404 CATCH-ALL – MUST BE LAST */}
+            {/* Catch all */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

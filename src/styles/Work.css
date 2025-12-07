@@ -199,10 +199,13 @@
 }
 
 .project-title {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
+  line-height: 1.3;
   font-weight: 700;
   color: var(--black);
+  overflow-wrap: break-word;
 }
+
 
 .project-tagline {
   font-size: 0.95rem;
@@ -265,4 +268,10 @@
   .project-img {
     height: 200px;
   }
+}
+/* Special handling for Typographic Anatomy thumbnail */
+.project-img[alt^="Typographic Anatomy"] {
+  object-fit: contain;
+  padding: 0.75rem;
+  background: #f0f0f2;
 }

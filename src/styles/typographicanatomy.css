@@ -1,0 +1,142 @@
+/* ================================
+   ROUTE-SPECIFIC BLUR KILLS
+================================ */
+body.no-sheen-now header,
+body.no-sheen-now .work-nav {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: transparent !important; 
+  box-shadow: none !important;
+}
+
+/* ================================
+   PAGE BACKGROUND + GRID
+================================ */
+
+.typography-wrapper {
+  padding: 9rem 2rem 6rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #fdf3f7; /* soft pink, subtle, not candy */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.5rem; /* breathing room between blocks */
+}
+
+/* ================================
+   HEADER TYPOGRAPHY
+================================ */
+
+.typography-header {
+  width: 100%;
+  max-width: 640px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.typography-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--pink-primary);
+}
+
+/* editorial intro — softer, calmer spacing */
+.typography-intro {
+  font-size: 1.08rem;
+  line-height: 1.78;
+  color: var(--black);
+  opacity: 0.92;
+  max-width: 640px;
+}
+
+/* ================================
+   HERO IMAGE PANEL
+================================ */
+
+.typography-hero {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.07);
+}
+
+.typography-hero img {
+  width: 100%;
+  max-width: 520px;
+  display: block;
+}
+
+/* ================================
+   DETAILS TYPOGRAPHY
+================================ */
+
+.typography-details {
+  width: 100%;
+  max-width: 760px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: var(--black);
+  font-size: 1rem;
+  line-height: 1.78;
+}
+
+.typography-details h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--black);
+  opacity: 0.7;
+}
+
+/* ================================
+   BACK BUTTON
+================================ */
+
+.back-to-work-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: var(--pink-primary);
+  color: white;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease;
+  margin-top: 2rem;
+}
+
+.back-to-work-btn:hover {
+  background: var(--pink-hot);
+  transform: translateY(-2px);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .typography-wrapper {
+    padding: 7.5rem 1.25rem 4rem;
+    gap: 3rem;
+  }
+
+  .typography-header h1 {
+    font-size: 2.3rem;
+  }
+
+  .typography-hero {
+    padding: 1.25rem;
+  }
+}

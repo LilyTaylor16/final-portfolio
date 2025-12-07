@@ -47,12 +47,12 @@ const projects = [
       "Promotional video for a fictional ride share app, with full sound design, logo work and on screen animation built with my team.",
   },
   {
-    title: "Project 6",
-    path: "/projects/project6",
-    img: "/Projects/project6.png",
-    category: "Case study coming soon",
+    title: "Typographic Anatomy",
+    path: "/projects/typographicanatomy",
+    img: "/Projects/typealphabet/typealphabet.png",
+    category: "Typography Experimental",
     tagline:
-      "New work in progress. This slot will be replaced with a full case study.",
+    "An alphabet created from portrait photography where facial features suggest letter forms.",
   },
   {
     title: "Project 7",
