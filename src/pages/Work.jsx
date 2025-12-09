@@ -50,17 +50,17 @@ const projects = [
     title: "Typographic Anatomy",
     path: "/projects/typographicanatomy",
     img: "/Projects/typealphabet/typealphabet.png",
-    category: "Typography Experimental",
+    category: "Typography · Experimental",
     tagline:
-    "An alphabet created from portrait photography where facial features suggest letter forms.",
+      "An alphabet created from portrait photography where facial features suggest letter forms.",
   },
   {
-    title: "Project 7",
-    path: "/projects/project7",
-    img: "/Projects/project7.png",
-    category: "Case study coming soon",
+    title: "Scrap",
+    path: "/projects/scrap",
+    img: "/Projects/scrap/scrapwireframes.png",
+    category: "App Development · React Native",
     tagline:
-      "New work in progress. This slot will be replaced with a full case study.",
+      "Digital scrapbook app with onboarding, live map data, scrap creation, memory storage and a coded working flow.",
   },
   {
     title: "Project 8",
@@ -83,7 +83,6 @@ function Work() {
         />
       </Helmet>
 
-      {/* top nav with logo */}
       <header className="work-nav">
         <Link to="/" className="work-logo-link">
           <img
@@ -93,9 +92,7 @@ function Work() {
           />
         </Link>
         <nav className="work-nav-links">
-          <Link to="/" className="work-nav-link">
-            Home
-          </Link>
+          <Link to="/" className="work-nav-link">Home</Link>
           <span className="work-nav-divider">/</span>
           <span className="work-nav-current">Work</span>
         </nav>

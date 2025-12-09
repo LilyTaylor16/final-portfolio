@@ -25,7 +25,7 @@ import Deftones from "./pages/projects/Deftones";
 import OrbitStudios from "./pages/projects/Orbit";
 import BeyondRides from "./pages/projects/BeyondRides";
 import TypographicAnatomy from "./pages/projects/TypographicAnatomy";
-import Project7 from "./pages/projects/Project7";
+import Scrap from "./pages/projects/Scrap"; // ← new import
 import Project8 from "./pages/projects/Project8";
 
 function App() {
@@ -34,7 +34,6 @@ function App() {
       <Helmet>
         <link rel="icon" type="image/png" href="/favicon.png" />
 
-        {/* Open Graph / social preview */}
         <meta
           property="og:title"
           content="Lily Taylor | Designer and Creative Developer"
@@ -50,7 +49,6 @@ function App() {
         <meta property="og:url" content="https://lily-taylor.ca" />
         <meta property="og:type" content="website" />
 
-        {/* Twitter card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -82,11 +80,15 @@ function App() {
             <Route path="/projects/deftones" element={<Deftones />} />
             <Route path="/projects/orbitstudios" element={<OrbitStudios />} />
             <Route path="/projects/beyondrides" element={<BeyondRides />} />
-            <Route path="/projects/typographicanatomy" element={<TypographicAnatomy />}
+            <Route
+              path="/projects/typographicanatomy"
+              element={<TypographicAnatomy />}
             />
 
-            {/* Future projects */}
-            <Route path="/projects/project7" element={<Project7 />} />
+            {/* Scrap replaces Project 7 */}
+            <Route path="/projects/scrap" element={<Scrap />} />
+
+            {/* Future project */}
             <Route path="/projects/project8" element={<Project8 />} />
 
             {/* Catch all */}
