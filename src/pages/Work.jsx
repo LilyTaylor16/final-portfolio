@@ -63,12 +63,12 @@ const projects = [
       "Digital scrapbook app with onboarding, live map data, scrap creation, memory storage and a coded working flow.",
   },
   {
-    title: "Project 8",
-    path: "/projects/project8",
-    img: "/Projects/project8.png",
-    category: "Case study coming soon",
+    title: "Sardines Packaging",
+    path: "/projects/sardines",
+    img: "/Projects/sardines/sardinesmockup.png",
+    category: "Packaging · Illustration",
     tagline:
-      "New work in progress. This slot will be replaced with a full case study.",
+      "3D sardine can mockup with a bright boutique style label and custom logo mark.",
   },
 ];
 

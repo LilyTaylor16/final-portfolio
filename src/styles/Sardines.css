@@ -1,0 +1,301 @@
+/* ===========================
+   SARDINES PAGE WRAPPER
+   (same system as Punk & Pucker)
+=========================== */
+
+.project-page.project-wrapper.sardines-page {
+    max-width: 1100px;
+    margin: 7rem auto 0;
+    padding: 3.5rem 1.5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    backdrop-filter: none;
+  }
+  
+  /* ===========================
+     BREADCRUMB
+  =========================== */
+  
+  .project-breadcrumb {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .project-back-link {
+    font-size: 0.875rem;
+    color: var(--black);
+    opacity: 0.7;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  
+  .project-back-link:hover {
+    opacity: 1;
+    transform: translateX(-2px);
+  }
+  
+  /* ===========================
+     TYPOGRAPHY
+  =========================== */
+  
+  .project-title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: var(--black);
+    text-transform: uppercase;
+  }
+  
+  .project-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--black);
+    max-width: 40rem;
+    margin-bottom: 0.8rem;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  .project-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  .project-section h2 {
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--black);
+  }
+  
+  .project-text {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--black);
+  }
+  
+  /* used in Label Illustration + Secondary Logo sections */
+  .project-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .project-text-block h2 {
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--black);
+  }
+  
+  /* ===========================
+     HERO
+  =========================== */
+  
+  .project-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 2.25rem;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  .project-hero-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  .project-hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .project-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.7;
+  }
+  
+  /* ===========================
+     META GRID (Role / Tools / etc.)
+  =========================== */
+  
+  .project-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .project-meta-grid h3 {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+  
+  /* ===========================
+     SPLIT LAYOUT SECTIONS
+  =========================== */
+  
+  .project-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 2rem;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  .project-split.reverse {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+  
+  .project-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  /* smaller image for secondary logo block */
+  .logo-experiment-section img {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+  
+  /* ===========================
+     IMAGE GALLERY
+  =========================== */
+  
+  .project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .project-gallery img {
+    width: 100%;
+    max-width: 260px;
+    justify-self: center;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  
+  .project-gallery img:hover {
+    transform: translateY(-4px);
+    opacity: 0.95;
+  }
+  
+  /* reflection section a bit narrower */
+  .project-reflection {
+    max-width: 50rem;
+  }
+  
+  /* ===========================
+     FADE-IN ANIMATION
+     (same as other project pages)
+  =========================== */
+  
+  .project-page.project-wrapper section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSection 0.55s ease forwards;
+    animation-delay: calc(var(--section-index) * 0.1s);
+  }
+  
+  @keyframes fadeInSection {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* ===========================
+     RESPONSIVE
+  =========================== */
+  
+  @media (max-width: 900px) {
+    .project-hero,
+    .project-split,
+    .project-split.reverse {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  
+    .project-hero {
+      gap: 2rem;
+    }
+  
+    .project-title {
+      font-size: 2.2rem;
+      text-align: left;
+    }
+  
+    .project-meta-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .project-page.project-wrapper.sardines-page {
+      padding: 3rem 1.25rem 4rem;
+    }
+  
+    .project-meta-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  
+    .project-gallery {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  
+  /* ===========================
+     FLOATING PINK BUTTON
+  =========================== */
+  
+  .sardines-back-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    padding: 0.65rem 1.1rem;
+    background: var(--pink-primary);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+    z-index: 2000;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  
+  .sardines-back-btn:hover {
+    background: var(--pink-hot);
+    transform: translateY(-3px);
+  }
+  

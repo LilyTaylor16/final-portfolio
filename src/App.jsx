@@ -1,6 +1,7 @@
 // src/App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import "./styles/global.css";
 import "./App.css";
 import "./styles/variables.css";
@@ -25,8 +26,11 @@ import Deftones from "./pages/projects/Deftones";
 import OrbitStudios from "./pages/projects/Orbit";
 import BeyondRides from "./pages/projects/BeyondRides";
 import TypographicAnatomy from "./pages/projects/TypographicAnatomy";
-import Scrap from "./pages/projects/Scrap"; // ← new import
-import Project8 from "./pages/projects/Project8";
+import Scrap from "./pages/projects/Scrap";
+import Sardine from "./pages/projects/Sardine"; // ← new sardine project
+
+// 🔥 Global backsplash image
+import backsplash from "./assets/graphics/backsplash.png";
 
 function App() {
   return (
@@ -64,7 +68,18 @@ function App() {
         />
       </Helmet>
 
-      <div className="app-wrapper">
+      <div
+        className="app-wrapper"
+        style={{
+          backgroundImage: `url(${backsplash})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+          width: "100%",
+        }}
+      >
         <Header />
         <main className="main-content">
           <Routes>
@@ -84,12 +99,12 @@ function App() {
               path="/projects/typographicanatomy"
               element={<TypographicAnatomy />}
             />
-
-            {/* Scrap replaces Project 7 */}
             <Route path="/projects/scrap" element={<Scrap />} />
 
-            {/* Future project */}
-            <Route path="/projects/project8" element={<Project8 />} />
+            {/* Sardine project (Project 8) */}
+            <Route path="/projects/sardines" element={<Sardine />} />
+            {/* optional: keep old URL working if you already linked to project8 */}
+            <Route path="/projects/project8" element={<Sardine />} />
 
             {/* Catch all */}
             <Route path="*" element={<NotFound />} />

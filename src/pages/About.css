@@ -2,7 +2,7 @@
   position: relative;
   padding: 4rem 1.5rem;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 7rem auto 0; /* moves whole page down so header doesn't cut it off */
   display: flex;
   flex-direction: column;
   gap: 4rem;
@@ -209,7 +209,7 @@
 /* Two-column grid: Song of the Day on left, embeds stacked on right */
 .music-grid-2col {
   display: grid;
-  grid-template-columns: 1.4fr 1fr; /* left wider */
+  grid-template-columns: 1.4fr 1fr;
   gap: 24px;
   align-items: start;
 }
@@ -241,7 +241,7 @@
 /* Make embeds behave */
 .music-panel iframe {
   width: 100%;
-  height: 200px; /* matches JSX */
+  height: 200px;
   border: 0;
   border-radius: 6px;
   display: block;
@@ -249,7 +249,6 @@
   z-index: 0;
 }
 
-/* Hover micro-interaction (optional) */
 .music-panel iframe:hover {
   transform: none;
 }
@@ -269,22 +268,17 @@
 .music-card {
   position: relative;
   padding: 1.5rem 1.75rem;
-  border-radius: 16px;
 
-  /* ✨ NEW readable background */
-  background: rgba(255, 215, 235, 0.75); /* soft pink glass */
-
+  background: rgba(255, 215, 235, 0.75);
   border: 1px solid var(--pink-primary);
   box-shadow:
     0 0 18px rgba(255, 45, 175, 0.20),
     0 6px 18px rgba(0, 0, 0, 0.12);
-
   backdrop-filter: blur(10px);
   color: var(--black);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Light glow, not chaotic */
 .music-card::before {
   content: "";
   position: absolute;
@@ -298,7 +292,6 @@
   pointer-events: none;
 }
 
-/* Much softer texture */
 .music-card::after {
   content: "";
   position: absolute;
@@ -316,7 +309,6 @@
     0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
-/* Text stays crisp */
 .music-label {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -349,10 +341,9 @@
   line-height: 1.4;
 }
 
-/* iframe fix */
 .music-embed-wrapper iframe {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 0px;
   border: none;
 }
 
@@ -362,79 +353,56 @@
   opacity: 0.7;
 }
 
-/* mobile spacing if needed */
 @media (max-width: 768px) {
   .music-card {
     margin-bottom: 1.25rem;
   }
 }
-/* ===== SHARP + SPIKY Back to Top Button ===== */
+
+/* === Normal Pink Button === */
 .back-to-top {
   position: fixed;
-  bottom: 28px;
-  right: 28px;
+  bottom: 24px;
+  right: 24px;
   z-index: 9999;
 
-  /* flat pink — no ombre */
   background: var(--pink-primary);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
 
-  /* text */
-  color: #ffffff;
-  font-size: 0.9rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  padding: 0.55rem 1rem;
 
-  padding: 0.7rem 1.6rem;
-
-  /* the base shape — the SPIKY mask does the real work */
-  border-radius: 12px;
   border: none;
   cursor: pointer;
 
-  /* SPIKY mask (extra sharp) */
-  --e: 22px; /* crank the spike size HIGHER */
-  -webkit-mask:
-    radial-gradient(circle at 0 0, transparent calc(var(--e) - 2px), #000 calc(var(--e) + 1px)) top left,
-    radial-gradient(circle at 100% 0, transparent calc(var(--e) - 2px), #000 calc(var(--e) + 1px)) top right,
-    radial-gradient(circle at 100% 100%, transparent calc(var(--e) - 2px), #000 calc(var(--e) + 1px)) bottom right,
-    radial-gradient(circle at 0 100%, transparent calc(var(--e) - 2px), #000 calc(var(--e) + 1px)) bottom left;
-  -webkit-mask-size: 52% 52%;
-  -webkit-mask-repeat: no-repeat;
-
-  /* animation */
   opacity: 0;
-  transform: translateY(20px) scale(0.95);
+  transform: translateY(10px);
   transition:
     opacity 0.25s ease,
-    transform 0.25s cubic-bezier(0.2, 0.7, 0.3, 1);
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
-/* Show state */
 .back-to-top.show {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
-/* Hover — sharper, harsher */
 .back-to-top:hover {
-  background: var(--pink-hot); /* still flat, just brighter */
-  transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 12px 40px rgba(255, 0, 128, 0.25);
+  background: var(--pink-hot);
 }
 
-/* Active */
 .back-to-top:active {
   transform: translateY(0) scale(0.96);
 }
 
-/* mobile */
+/* mobile size tweak */
 @media (max-width: 768px) {
   .back-to-top {
     bottom: 16px;
     right: 16px;
-    padding: 0.55rem 1.2rem;
+    padding: 0.45rem 0.85rem;
     font-size: 0.75rem;
-    --e: 18px; /* slightly smaller spikes on small screens */
   }
 }
